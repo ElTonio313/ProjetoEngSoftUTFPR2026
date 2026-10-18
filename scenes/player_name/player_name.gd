@@ -24,7 +24,7 @@ func _confirm_name() -> void:
 		message_label.text = error
 		return
 	GameState.player_name = name_input.text.strip_edges()
-	print("Nome gravado: '", GameState.player_name, "'")
+	GameState.go_to_phase1()
 
 func _on_confirm_button_pressed() -> void:
 	_confirm_name()
