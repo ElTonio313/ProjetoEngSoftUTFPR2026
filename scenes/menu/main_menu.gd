@@ -1,6 +1,5 @@
 extends Control
 
-func _ready() -> void:
-	print("nome antes: '", GameState.player_name, "'")
-	GameState.player_name = "Teste"
-	print("nome depois: '", GameState.player_name, "'")
+#muda para a cena de informar o nome
+func _on_play_button_pressed() -> void:
+	GameState.go_to_player_name()
