@@ -2,7 +2,7 @@ extends Control
 ## Tela da Fase 1 (quiz do Pantanal).
 ## Só cuida da interface: toda a lógica está no QuizManager.
 
-const MENU_SCENE := "res://scenes/menu/MainMenu.tscn"
+
 const COLOR_RIGHT := Color(0.1, 0.5, 0.2)
 const COLOR_WRONG := Color(0.6901961, 0, 0.1254902)  # mesmo vermelho da tela de nome
 const CATEGORY_NAMES := {
@@ -98,7 +98,7 @@ func _on_answer_checked(is_correct: bool, correct_index: int, feedback: String) 
 
 func _on_next_pressed() -> void:
 	if _finished:
-		get_tree().change_scene_to_file(MENU_SCENE)
+		GameState.go_to_phase2()
 	else:
 		quiz.next_question()
 
@@ -123,7 +123,7 @@ func _on_quiz_finished(result: Dictionary) -> void:
 		lines.append("%s: %d de %d" % [nice_name, int(data["hits"]), int(data["total"])])
 	feedback_label.text = "\n".join(lines)
 
-	next_button.text = "Voltar ao menu"
+	next_button.text = "Continuar"
 	next_button.show()
 	restart_button.show()
 
