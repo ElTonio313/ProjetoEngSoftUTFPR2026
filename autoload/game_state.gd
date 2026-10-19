@@ -2,7 +2,7 @@ extends Node
 
 #Caminho das Cenas
 const SCENE_PLAYER_NAME := "res://scenes/player_name/PlayerName.tscn"
-const SCENE_PHASE1 := "res://scenes/phase1/Phase1Placeholder.tscn"
+const SCENE_PHASE1 := "res://scenes/quiz/QuizScreen.tscn"
 const SCENE_PHASE2 := "res://scenes/phase2/Phase2.tscn"
 
 #nome do aluno informado na cena player_name
