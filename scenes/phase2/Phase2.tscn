@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://rw2y4d77tkay"]
 
+[ext_resource type="Script" uid="uid://clnjkcdu6qew1" path="res://scenes/phase2/phase_2.gd" id="1_rqy07"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n77a"]
 bg_color = Color(0.101960786, 0.5019608, 0.2, 1)
 corner_radius_top_left = 6
@@ -31,6 +33,22 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78bhq"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="Phase2" type="Control" unique_id=106227011]
 layout_mode = 3
 anchors_preset = 15
@@ -38,6 +56,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rqy07")
 
 [node name="Background" type="ColorRect" parent="." unique_id=971501191]
 layout_mode = 1
@@ -145,3 +164,121 @@ theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 
 theme_override_font_sizes/font_size = 44
 text = "Aves"
 horizontal_alignment = 1
+
+[node name="IntroPanel" type="ColorRect" parent="." unique_id=888097193]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+
+[node name="IntroMargin" type="MarginContainer" parent="IntroPanel" unique_id=1235761310]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="IntroColumn" type="VBoxContainer" parent="IntroPanel/IntroMargin" unique_id=442734826]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="IntroLabel" type="Label" parent="IntroPanel/IntroMargin/IntroColumn" unique_id=430173420]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 44
+text = "Conheça os três grupos de animais"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="GroupsRow" type="HBoxContainer" parent="IntroPanel/IntroMargin/IntroColumn" unique_id=788096671]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="MammalsCard" type="PanelContainer" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow" unique_id=7130953]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_78bhq")
+
+[node name="CardColumn" type="VBoxContainer" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/MammalsCard" unique_id=1896222325]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CardTitle" type="Label" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/MammalsCard/CardColumn" unique_id=1099068649]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 40
+text = "Mamíferos"
+horizontal_alignment = 1
+
+[node name="CardText" type="Label" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/MammalsCard/CardColumn" unique_id=1225833912]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 30
+text = "Os mamíferos têm pelos. As mães alimentam os filhotes com leite"
+autowrap_mode = 3
+
+[node name="ReptilesCard" type="PanelContainer" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow" unique_id=1577852037]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_78bhq")
+
+[node name="CardColumn" type="VBoxContainer" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/ReptilesCard" unique_id=1413853833]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CardTitle" type="Label" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/ReptilesCard/CardColumn" unique_id=332361077]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 40
+text = "Répteis"
+horizontal_alignment = 1
+
+[node name="CardText" type="Label" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/ReptilesCard/CardColumn" unique_id=26635927]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 30
+text = "Os répteis têm a pele seca, coberta por escamas. A maioria põe ovos."
+autowrap_mode = 3
+
+[node name="BirdsCard" type="PanelContainer" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow" unique_id=283228039]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_78bhq")
+
+[node name="CardColumn" type="VBoxContainer" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/BirdsCard" unique_id=1274555988]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CardTitle" type="Label" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/BirdsCard/CardColumn" unique_id=3458958]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 40
+text = "Aves"
+horizontal_alignment = 1
+
+[node name="CardText" type="Label" parent="IntroPanel/IntroMargin/IntroColumn/GroupsRow/BirdsCard/CardColumn" unique_id=380288551]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 30
+text = "As aves têm penas e bico. Todas as aves põem ovos."
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="IntroPanel/IntroMargin/IntroColumn" unique_id=513135561]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Continuar"
+
+[connection signal="pressed" from="IntroPanel/IntroMargin/IntroColumn/ContinueButton" to="." method="_on_continue_button_pressed"]
