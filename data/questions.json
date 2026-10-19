@@ -1,0 +1,54 @@
+{
+	"questions": [
+		{
+			"id": "tuiuiu",
+			"category": "fauna",
+			"text": "Qual ave é símbolo do Pantanal?",
+			"options": ["Tuiuiú", "Pardal"],
+			"correct_index": 0,
+			"feedback": "O tuiuiú é uma ave enorme, com mais de 1 metro de altura, e tem um colar vermelho no pescoço. Faz o ninho no alto das árvores, perto da água.",
+			"video_path": "res://assets/videos/tuiuiu.ogv",
+			"image_path": "res://assets/images/tuiuiu.png"
+		},
+		{
+			"id": "onca",
+			"category": "fauna",
+			"text": "Qual é o maior felino das Américas?",
+			"options": ["Onça", "Leão"],
+			"correct_index": 0,
+			"feedback": "A onça-pintada está ameaçada de extinção. Leões não vivem na natureza das Américas. Proteger o Pantanal ajuda a salvar a espécie.",
+			"video_path": "res://assets/videos/onca.ogv",
+			"image_path": "res://assets/images/onca.png"
+		},
+		{
+			"id": "tamandua",
+			"category": "fauna",
+			"text": "O que o tamanduá-bandeira come?",
+			"options": ["Formigas", "Peixes"],
+			"correct_index": 0,
+			"feedback": "Ele não tem dentes e usa a língua comprida e grudenta para pegar formigas e cupins.",
+			"video_path": "res://assets/videos/tamandua.ogv",
+			"image_path": "res://assets/images/tamandua.png"
+		},
+		{
+			"id": "aguape",
+			"category": "flora",
+			"text": "Onde vive o aguapé?",
+			"options": ["Água", "Areia"],
+			"correct_index": 0,
+			"feedback": "O aguapé flutua em rios e lagoas e serve de abrigo e alimento para vários animais.",
+			"video_path": "res://assets/videos/aguape.ogv",
+			"image_path": "res://assets/images/aguape.png"
+		},
+		{
+			"id": "proteger",
+			"category": "conservacao",
+			"text": "O que devemos fazer com o Pantanal?",
+			"options": ["Proteger", "Queimar"],
+			"correct_index": 0,
+			"feedback": "Queimadas e desmatamento destroem a casa dos animais e das plantas. Proteger o bioma é o objetivo do ODS 15, Vida na Terra.",
+			"video_path": "res://assets/videos/proteger.ogv",
+			"image_path": "res://assets/images/proteger.png"
+		}
+	]
+}

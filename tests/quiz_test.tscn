@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://76oacc17q6r6"]
+
+[ext_resource type="Script" uid="uid://bmexheq81celv" path="res://scripts/quiz/quiz_test.gd" id="1"]
+
+[node name="QuizTest" type="Node" unique_id=1811999955]
+script = ExtResource("1")
