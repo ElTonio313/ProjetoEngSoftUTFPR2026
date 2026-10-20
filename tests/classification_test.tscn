@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d01xsciedblbq"]
+
+[ext_resource type="Script" uid="uid://c4wf4qephce8l" path="res://scripts/classification/classification_teste.gd" id="1_jsp04"]
+
+[node name="ClassificationTest" type="Node" unique_id=1430575182]
+script = ExtResource("1_jsp04")
