@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://rw2y4d77tkay"]
 
 [ext_resource type="Script" uid="uid://clnjkcdu6qew1" path="res://scenes/phase2/phase_2.gd" id="1_rqy07"]
+[ext_resource type="Script" uid="uid://bky6cs8uamoh6" path="res://scenes/phase2/animal_card.gd" id="2_hkqjy"]
+[ext_resource type="Script" uid="uid://l4ssu3gam510" path="res://scenes/phase2/drop_zone.gd" id="3_yqm5v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n77a"]
 bg_color = Color(0.101960786, 0.5019608, 0.2, 1)
@@ -113,7 +115,9 @@ size_flags_vertical = 3
 [node name="AnimalCard" type="PanelContainer" parent="MarginContainer/MainColumn/AnimalArea" unique_id=2072708005]
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ydn5")
+script = ExtResource("2_hkqjy")
 
 [node name="NameLabel" type="Label" parent="MarginContainer/MainColumn/AnimalArea/AnimalCard" unique_id=1616085400]
 layout_mode = 2
@@ -127,10 +131,13 @@ layout_mode = 2
 theme_override_constants/separation = 24
 
 [node name="MammalsZone" type="PanelContainer" parent="MarginContainer/MainColumn/ZonesRow" unique_id=1495159700]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_byssr")
+script = ExtResource("3_yqm5v")
+category = "mamifero"
 
 [node name="ZoneLabel" type="Label" parent="MarginContainer/MainColumn/ZonesRow/MammalsZone" unique_id=320665597]
 layout_mode = 2
@@ -139,26 +146,32 @@ theme_override_font_sizes/font_size = 44
 text = "Mamiferos"
 horizontal_alignment = 1
 
-[node name="ReptileZone" type="PanelContainer" parent="MarginContainer/MainColumn/ZonesRow" unique_id=1658327907]
+[node name="ReptilesZone" type="PanelContainer" parent="MarginContainer/MainColumn/ZonesRow" unique_id=1658327907]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_byssr")
+script = ExtResource("3_yqm5v")
+category = "reptil"
 
-[node name="ZoneLabel" type="Label" parent="MarginContainer/MainColumn/ZonesRow/ReptileZone" unique_id=287910925]
+[node name="ZoneLabel" type="Label" parent="MarginContainer/MainColumn/ZonesRow/ReptilesZone" unique_id=287910925]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 theme_override_font_sizes/font_size = 44
 text = "Répteis"
 horizontal_alignment = 1
 
-[node name="BirdZone" type="PanelContainer" parent="MarginContainer/MainColumn/ZonesRow" unique_id=2101423748]
+[node name="BirdsZone" type="PanelContainer" parent="MarginContainer/MainColumn/ZonesRow" unique_id=2101423748]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_byssr")
+script = ExtResource("3_yqm5v")
+category = "ave"
 
-[node name="ZoneLabel" type="Label" parent="MarginContainer/MainColumn/ZonesRow/BirdZone" unique_id=1296486589]
+[node name="ZoneLabel" type="Label" parent="MarginContainer/MainColumn/ZonesRow/BirdsZone" unique_id=1296486589]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 theme_override_font_sizes/font_size = 44
@@ -167,6 +180,7 @@ horizontal_alignment = 1
 
 [node name="IntroPanel" type="ColorRect" parent="." unique_id=888097193]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

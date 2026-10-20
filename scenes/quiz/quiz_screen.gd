@@ -98,7 +98,7 @@ func _on_answer_checked(is_correct: bool, correct_index: int, feedback: String) 
 
 func _on_next_pressed() -> void:
 	if _finished:
-		GameState.go_to_phase2()
+		GameState.go_to_phase2() #alterando caminho do botão
 	else:
 		quiz.next_question()
 
@@ -123,7 +123,7 @@ func _on_quiz_finished(result: Dictionary) -> void:
 		lines.append("%s: %d de %d" % [nice_name, int(data["hits"]), int(data["total"])])
 	feedback_label.text = "\n".join(lines)
 
-	next_button.text = "Continuar"
+	next_button.text = "Continuar" #alterando texto do botão
 	next_button.show()
 	restart_button.show()
 
