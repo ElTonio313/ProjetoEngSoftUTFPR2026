@@ -77,9 +77,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
+theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 24
 
 [node name="MainColumn" type="VBoxContainer" parent="MarginContainer" unique_id=1228698713]
 layout_mode = 2
@@ -94,6 +94,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="ProgressLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=458593463]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 theme_override_font_sizes/font_size = 28
@@ -101,6 +102,7 @@ text = "0 de 6 animais"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/MainColumn" unique_id=1314564838]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(520, 24)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -127,14 +129,27 @@ theme_override_font_sizes/font_size = 40
 text = "Animal"
 horizontal_alignment = 1
 
-[node name="FeedbackLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=564995622]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 90)
+[node name="FeedbackRow" type="HBoxContainer" parent="MarginContainer/MainColumn" unique_id=2026902704]
 layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="FeedbackLabel" type="Label" parent="MarginContainer/MainColumn/FeedbackRow" unique_id=564995622]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="NextButton" type="Button" parent="MarginContainer/MainColumn/FeedbackRow" unique_id=2146039434]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Próximo Animal"
 
 [node name="ZonesRow" type="HBoxContainer" parent="MarginContainer/MainColumn" unique_id=714026897]
 layout_mode = 2
@@ -305,4 +320,5 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 text = "Continuar"
 
+[connection signal="pressed" from="MarginContainer/MainColumn/FeedbackRow/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="IntroPanel/IntroMargin/IntroColumn/ContinueButton" to="." method="_on_continue_button_pressed"]
