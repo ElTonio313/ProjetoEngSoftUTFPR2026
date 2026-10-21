@@ -83,7 +83,7 @@ theme_override_constants/margin_bottom = 40
 
 [node name="MainColumn" type="VBoxContainer" parent="MarginContainer" unique_id=1228698713]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 12
 
 [node name="InstructionLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=1032534349]
 layout_mode = 2
@@ -113,7 +113,8 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="AnimalCard" type="PanelContainer" parent="MarginContainer/MainColumn/AnimalArea" unique_id=2072708005]
-custom_minimum_size = Vector2(240, 240)
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ydn5")
@@ -126,13 +127,22 @@ theme_override_font_sizes/font_size = 40
 text = "Animal"
 horizontal_alignment = 1
 
+[node name="FeedbackLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=564995622]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="ZonesRow" type="HBoxContainer" parent="MarginContainer/MainColumn" unique_id=714026897]
 layout_mode = 2
 theme_override_constants/separation = 24
 
 [node name="MammalsZone" type="PanelContainer" parent="MarginContainer/MainColumn/ZonesRow" unique_id=1495159700]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_byssr")
@@ -148,7 +158,7 @@ horizontal_alignment = 1
 
 [node name="ReptilesZone" type="PanelContainer" parent="MarginContainer/MainColumn/ZonesRow" unique_id=1658327907]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_byssr")
@@ -164,7 +174,7 @@ horizontal_alignment = 1
 
 [node name="BirdsZone" type="PanelContainer" parent="MarginContainer/MainColumn/ZonesRow" unique_id=2101423748]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_byssr")
