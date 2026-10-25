@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scenes/quiz/quiz_screen.gd" id="1_quiz"]
+[ext_resource type="PackedScene" path="res://scenes/ui/AudioControls.tscn" id="2_audio"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
 bg_color = Color(0.1, 0.5, 0.2, 1)
@@ -8,6 +9,22 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 40.0
+content_margin_top = 32.0
+content_margin_right = 40.0
+content_margin_bottom = 32.0
+bg_color = Color(0.98, 0.98, 0.98, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.35, 0.35, 0.35, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="QuizScreen" type="Control"]
 layout_mode = 3
@@ -32,13 +49,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 16
 
 [node name="ProgressLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -93,20 +111,118 @@ theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="NextButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ActionRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="HintButton" type="Button" parent="CenterContainer/VBoxContainer/ActionRow"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(360, 80)
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Dica"
+
+[node name="NextButton" type="Button" parent="CenterContainer/VBoxContainer/ActionRow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Próxima"
 
-[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer/ActionRow"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(360, 80)
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 text = "Jogar de novo"
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -700.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = 76.0
+grow_horizontal = 0
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="AboutButton" type="Button" parent="TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Sobre"
+
+[node name="AudioControls" parent="TopBar" instance=ExtResource("2_audio")]
+layout_mode = 2
+
+[node name="AboutOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="AboutOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Center" type="CenterContainer" parent="AboutOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="AboutOverlay/Center"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Box" type="VBoxContainer" parent="AboutOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="AboutTitle" type="Label" parent="AboutOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 44
+text = "Sobre a Fase 1"
+horizontal_alignment = 1
+
+[node name="AboutText" type="Label" parent="AboutOverlay/Center/Panel/Box"]
+custom_minimum_size = Vector2(980, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_constants/line_spacing = 6
+theme_override_font_sizes/font_size = 28
+text = "Nesta fase você responde perguntas sobre os bichos e as plantas do Pantanal.
+Escolha uma resposta. Se errar, aparece uma dica e você tenta de novo.
+Se precisar de ajuda, clique em Dica.
+Depois de acertar, você lê uma explicação e vai para a próxima pergunta.
+Esta fase faz parte do ODS 15, Vida na Terra: cuidar do Pantanal é cuidar da vida dos animais e das plantas."
+autowrap_mode = 3
+
+[node name="CloseAboutButton" type="Button" parent="AboutOverlay/Center/Panel/Box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Fechar"
