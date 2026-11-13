@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://cpwrvp5xnf8w7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n77a"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="FinalReport" type="Control" unique_id=1871922831]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="." unique_id=1468764104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=514717949]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="MainColumn" type="VBoxContainer" parent="MarginContainer" unique_id=1220002407]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=383926003]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 48
+text = "Parabéns"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=1264274262]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 30
+text = "Você concluiu as duas fases"
+horizontal_alignment = 1
+
+[node name="TotalTimeLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=1346351059]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 32
+text = "Tempo total: --"
+horizontal_alignment = 1
+
+[node name="CardsRow" type="HBoxContainer" parent="MarginContainer/MainColumn" unique_id=1242005843]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="Phase1Card" type="PanelContainer" parent="MarginContainer/MainColumn/CardsRow" unique_id=1763220950]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7n77a")
+
+[node name="Phase1Column" type="VBoxContainer" parent="MarginContainer/MainColumn/CardsRow/Phase1Card" unique_id=444142982]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Phase1Title" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card/Phase1Column" unique_id=1204877797]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 34
+text = "Fase 1: Quiz"
+horizontal_alignment = 1
+
+[node name="Phase1Summary" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card/Phase1Column" unique_id=1180605054]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 28
+text = "Acertos: -- de --"
+autowrap_mode = 3
+
+[node name="Phase1Time" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card/Phase1Column" unique_id=840266597]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 28
+text = "Tempo: --"
+autowrap_mode = 3
+
+[node name="Phase1Categories" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card/Phase1Column" unique_id=462730700]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 28
+text = "Fauna: --
+Flora: --
+Conservação: --"
+autowrap_mode = 3
+
+[node name="Phase1Card2" type="PanelContainer" parent="MarginContainer/MainColumn/CardsRow" unique_id=1993698558]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7n77a")
+
+[node name="Phase2Column" type="VBoxContainer" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2" unique_id=1178977727]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Phase2Title" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2/Phase2Column" unique_id=1494487060]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 34
+text = "Fase 2: Classificação"
+horizontal_alignment = 1
+
+[node name="Phase2Summary" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2/Phase2Column" unique_id=1055032695]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 28
+text = "Animais classificados: -- de --"
+autowrap_mode = 3
+
+[node name="Phase2Errors" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2/Phase2Column" unique_id=2076621164]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 28
+text = "Erro: --"
+autowrap_mode = 3
+
+[node name="Phase2Exercises" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2/Phase2Column" unique_id=200251281]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+theme_override_font_sizes/font_size = 28
+text = "Animal 1: --
+Animal 2: --
+Animal 3: --
+Animal 4: --
+Animal 5: --
+Animal 6: --"
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="MarginContainer/MainColumn" unique_id=23665570]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 38
+text = "Voltar ao Menu"
