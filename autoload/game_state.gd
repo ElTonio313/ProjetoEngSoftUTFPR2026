@@ -22,6 +22,7 @@ func go_to_player_name() -> void:
 	get_tree().change_scene_to_file(SCENE_PLAYER_NAME)
 
 func go_to_phase1() -> void:
+	GameData.reset()
 	start_activity()                                                            
 	get_tree().change_scene_to_file(SCENE_PHASE1)
 
@@ -44,6 +45,12 @@ func finish_activity() -> void:
 	if _activity_start_msec < 0 or _activity_end_msec >= 0:
 		return
 	_activity_end_msec = Time.get_ticks_msec()
+
+# limpa a nome e relógio. Chamada quando o aluno volta ao menu.
+func reset_session() -> void:
+	player_name = ""
+	_activity_start_msec = -1
+	_activity_end_msec = -1
 
 
 # só há tempo total se a atividade começou E terminou.

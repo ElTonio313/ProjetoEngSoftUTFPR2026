@@ -30,6 +30,11 @@ func _ready() -> void:
 	GameState.start_activity()
 	_check(not GameState.has_total_time(), "um novo início zera a medição")
 
+	GameState.player_name = "Teste"
+	GameState.start_activity()
+	GameState.finish_activity()
+	GameState.reset_session()
+	_check(GameState.player_name == "" and not GameState.has_total_time(), "reset_session limpa o nome e o relógio")
 	print("=== RESULTADO FINAL: %s ===" % ("TUDO CERTO" if _falhas == 0 else "%d FALHA(S)" % _falhas))
 
 

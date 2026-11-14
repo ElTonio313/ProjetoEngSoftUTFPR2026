@@ -36,6 +36,7 @@ func _ready() -> void:
 
 
 func _on_back_pressed() -> void:
+	GameState.reset_session()
 	GameState.go_to_main_menu()
 
 
