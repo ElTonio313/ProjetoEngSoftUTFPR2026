@@ -80,18 +80,10 @@ func _on_answer_checked(is_correct: bool, hint: String) -> void:
 	else:
 		_show_feedback("✘ Não foi dessa vez. Tente de novo.\nDica: " + hint, COLOR_WRONG)
 
-
-# PROVISÓRIO. A conclusão de verdade vem na Etapa 9.
 func _on_phase_finished(result: Dictionary) -> void:
-	# PROVISÓRIO (decisão do grupo pendente): guarda o resultado onde a Fase 1
-	# já guarda o dela. Para mudar o destino, altere só esta linha.
-	GameData.set_phase2_result(result)
-	print("Fase 2 concluída: ", result)  # conferência durante os testes
-
-	var player_name: String = GameState.player_name
-	finish_title.text = "Parabéns, %s!" % player_name if player_name != "" else "Parabéns!"
-	finish_text.text = "Você classificou os %d animais." % int(result["total"])
-	finish_panel.show()
+	GameData.set_phase2_result(result)   # 1) guarda o resultado da Fase 2
+	GameState.finish_activity()          # 2) encerra o relógio total
+	GameState.go_to_final_report()       # 3) vai para o relatório
 
 # a barra e o texto sempre refletem o que a lógica já contou.
 func _update_progress() -> void:

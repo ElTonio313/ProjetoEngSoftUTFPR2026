@@ -5,7 +5,7 @@ const SCENE_MAIN_MENU := "res://scenes/menu/MainMenu.tscn"
 const SCENE_PLAYER_NAME := "res://scenes/player_name/PlayerName.tscn"
 const SCENE_PHASE1 := "res://scenes/quiz/QuizScreen.tscn"
 const SCENE_PHASE2 := "res://scenes/phase2/Phase2.tscn"
-const SCENE_FINAL_REPORT := "res://scenes/final_report/FinalReport.tscn"        
+const SCENE_FINAL_REPORT := "res://scenes/final_reports/FinalReport.tscn"        
 
 #nome do aluno informado na cena player_name
 var player_name: String = ""
