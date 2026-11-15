@@ -7,7 +7,8 @@ extends RefCounted
 var text: String = ""
 var options: Array[String] = []   # de 2 a 4 alternativas (palavras únicas)
 var correct_index: int = 0        # posição da alternativa correta em "options"
-var feedback: String = ""         # explicação mostrada depois da resposta
+var feedback: String = ""         # explicação mostrada depois que o jogador acerta
+var hint: String = ""             # dica: botão "Dica" e também mostrada quando o jogador erra
 var category: String = ""         # "fauna", "flora", "conservacao"...
 var video_path: String = ""       # vídeo-tutorial (res://assets/videos/...)
 var image_path: String = ""       # imagem da pergunta (res://assets/images/...)
@@ -37,6 +38,7 @@ static func from_dict(data: Dictionary) -> Question:
 		q.options.append(str(option))
 	q.correct_index = index
 	q.feedback = str(data["feedback"])
+	q.hint = str(data.get("hint", ""))   # opcional: sem dica, o botão "Dica" não aparece
 	q.category = str(data["category"])
 	q.video_path = str(data.get("video_path", ""))
 	q.image_path = str(data.get("image_path", ""))

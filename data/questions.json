@@ -6,6 +6,7 @@
 			"text": "Qual ave é símbolo do Pantanal?",
 			"options": ["Tuiuiú", "Pardal"],
 			"correct_index": 0,
+			"hint": "É uma ave enorme, com mais de 1 metro de altura e um colar vermelho no pescoço.",
 			"feedback": "O tuiuiú é uma ave enorme, com mais de 1 metro de altura, e tem um colar vermelho no pescoço. Faz o ninho no alto das árvores, perto da água.",
 			"video_path": "res://assets/videos/tuiuiu.ogv",
 			"image_path": "res://assets/images/tuiuiu.png"
@@ -16,6 +17,7 @@
 			"text": "Qual é o maior felino das Américas?",
 			"options": ["Onça", "Leão"],
 			"correct_index": 0,
+			"hint": "Esse felino tem manchas pretas no corpo e vive aqui, nas Américas. O outro vive na África.",
 			"feedback": "A onça-pintada está ameaçada de extinção. Leões não vivem na natureza das Américas. Proteger o Pantanal ajuda a salvar a espécie.",
 			"video_path": "res://assets/videos/onca.ogv",
 			"image_path": "res://assets/images/onca.png"
@@ -26,6 +28,7 @@
 			"text": "O que o tamanduá-bandeira come?",
 			"options": ["Formigas", "Peixes"],
 			"correct_index": 0,
+			"hint": "Ele não tem dentes. Tem uma língua comprida e grudenta para pegar bichos bem pequenos.",
 			"feedback": "Ele não tem dentes e usa a língua comprida e grudenta para pegar formigas e cupins.",
 			"video_path": "res://assets/videos/tamandua.ogv",
 			"image_path": "res://assets/images/tamandua.png"
@@ -36,6 +39,7 @@
 			"text": "Onde vive o aguapé?",
 			"options": ["Água", "Areia"],
 			"correct_index": 0,
+			"hint": "Pense nos rios e nas lagoas do Pantanal. Essa planta flutua.",
 			"feedback": "O aguapé flutua em rios e lagoas e serve de abrigo e alimento para vários animais.",
 			"video_path": "res://assets/videos/aguape.ogv",
 			"image_path": "res://assets/images/aguape.png"
@@ -46,6 +50,7 @@
 			"text": "O que devemos fazer com o Pantanal?",
 			"options": ["Proteger", "Queimar"],
 			"correct_index": 0,
+			"hint": "Pense no que ajuda os animais e as plantas a continuarem vivos.",
 			"feedback": "Queimadas e desmatamento destroem a casa dos animais e das plantas. Proteger o bioma é o objetivo do ODS 15, Vida na Terra.",
 			"video_path": "res://assets/videos/proteger.ogv",
 			"image_path": "res://assets/images/proteger.png"
