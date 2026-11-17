@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/audio_controls.gd" id="1_audio"]
+
+[node name="AudioControls" type="HBoxContainer"]
+theme_override_constants/separation = 16
+script = ExtResource("1_audio")
+
+[node name="MuteButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+toggle_mode = true
+text = "Som: ligado"
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0

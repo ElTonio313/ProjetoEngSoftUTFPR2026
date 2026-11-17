@@ -3,7 +3,7 @@ extends Node
 #Caminho das Cenas
 const SCENE_MAIN_MENU := "res://scenes/menu/MainMenu.tscn"                      
 const SCENE_PLAYER_NAME := "res://scenes/player_name/PlayerName.tscn"
-const SCENE_PHASE1 := "res://scenes/quiz/QuizScreen.tscn"
+const SCENE_PHASE1 := "res://scenes/intro/IntroScreen.tscn"
 const SCENE_PHASE2 := "res://scenes/phase2/Phase2.tscn"
 const SCENE_FINAL_REPORT := "res://scenes/final_reports/FinalReport.tscn"        
 
