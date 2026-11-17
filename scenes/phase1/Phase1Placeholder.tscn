@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dnwiww3ntuo5g"]
+
+[ext_resource type="Script" uid="uid://dc8gbx8pplb62" path="res://scenes/phase1/phase_1_placeholder.gd" id="1_xux6a"]
+
+[node name="Phase1Placeholder" type="Control" unique_id=2076279392]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xux6a")
+
+[node name="Background" type="ColorRect" parent="." unique_id=852197119]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1426608931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=91946158]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1017773797]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "Fase 1 Provisória"
+horizontal_alignment = 1
+
+[node name="ProceedButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1750470710]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Prosseguir"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ProceedButton" to="." method="_on_proceed_button_pressed"]
