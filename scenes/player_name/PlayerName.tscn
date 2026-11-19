@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://behibav8cjpne"]
 
 [ext_resource type="Script" uid="uid://lg8g3511ff12" path="res://scenes/player_name/player_name.gd" id="1_f6v1l"]
+[ext_resource type="AudioStream" uid="uid://br6orpjmj3srs" path="res://assets/audio/narration/player_name/PlayerNameText.ogg" id="2_w2mb8"]
+[ext_resource type="AudioStream" uid="uid://cb42i7nskdotq" path="res://assets/audio/narration/player_name/PlayerNameError.ogg" id="3_jcg7y"]
+[ext_resource type="AudioStream" uid="uid://d287gla613xfv" path="res://assets/audio/narration/player_name/PlayerNameLetters.ogg" id="4_5nlk5"]
 
 [node name="PlayerName" type="Control" unique_id=1768868739]
 layout_mode = 3
@@ -10,6 +13,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f6v1l")
+prompt_audio = ExtResource("2_w2mb8")
+error_empty_audio = ExtResource("3_jcg7y")
+error_letters_audio = ExtResource("4_5nlk5")
 
 [node name="BackGround" type="ColorRect" parent="." unique_id=128143332]
 layout_mode = 1

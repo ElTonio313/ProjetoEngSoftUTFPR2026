@@ -60,3 +60,20 @@ func _on_player_finished() -> void:
 	if _busy:
 		_busy = false
 		_ended.emit(true)
+
+## Toca várias falas em ordem. Para se alguma for interrompida (devolve false).
+func say_all(streams: Array[AudioStream]) -> bool:
+	for stream: AudioStream in streams:
+		var completed: bool = await say(stream)
+		if not completed:
+			return false
+	return true
+
+
+## Toca um arquivo pelo caminho. Se não existir, avisa e a tela segue normalmente.
+func say_file(path: String) -> bool:
+	if not ResourceLoader.exists(path):
+		push_warning("Narrator: áudio não encontrado: %s" % path)
+		_interrupt()   # a fala anterior não deve continuar
+		return true
+	return await say(load(path) as AudioStream)
