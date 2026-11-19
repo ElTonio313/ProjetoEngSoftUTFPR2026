@@ -2,13 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dy6e1daaqqaa1"
-path="res://.godot/imported/quit.ogg-71eb382dcf5c39548138cc9fcb48fc04.oggvorbisstr"
+uid="uid://de7t3ca137kv0"
+path="res://.godot/imported/Quit.ogg-2ac9b4c0aa2173b0ab04c7e4fa7d331e.oggvorbisstr"
 
 [deps]
 
-source_file="res://assets/audio/narration/menu/quit.ogg"
-dest_files=["res://.godot/imported/quit.ogg-71eb382dcf5c39548138cc9fcb48fc04.oggvorbisstr"]
+source_file="res://assets/audio/narration/menu/Quit.ogg"
+dest_files=["res://.godot/imported/Quit.ogg-2ac9b4c0aa2173b0ab04c7e4fa7d331e.oggvorbisstr"]
 
 [params]
 

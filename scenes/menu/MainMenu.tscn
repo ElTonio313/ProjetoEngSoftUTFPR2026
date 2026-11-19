@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://c2prcukasarl4"]
 
 [ext_resource type="Script" uid="uid://c8t5pdfnv0udn" path="res://scenes/menu/main_menu.gd" id="1_m2yvp"]
+[ext_resource type="AudioStream" uid="uid://cgstc5u88lr0g" path="res://assets/audio/narration/menu/Play.ogg" id="2_s3dsm"]
+[ext_resource type="AudioStream" uid="uid://b2irktv4qub2c" path="res://assets/audio/narration/menu/Credits.ogg" id="3_2nud1"]
+[ext_resource type="AudioStream" uid="uid://de7t3ca137kv0" path="res://assets/audio/narration/menu/Quit.ogg" id="4_iv2fv"]
 
 [node name="MainMenu" type="Control" unique_id=1905996071]
 layout_mode = 3
@@ -10,6 +13,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m2yvp")
+title_audio = ExtResource("2_s3dsm")
+play_audio = ExtResource("2_s3dsm")
+credits_audio = ExtResource("3_2nud1")
+quit_audio = ExtResource("4_iv2fv")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1333505192]
 layout_mode = 1
@@ -47,21 +54,13 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(360, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Jogar
-"
-
-[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1654769029]
-custom_minimum_size = Vector2(360, 80)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Configurações"
+text = "Jogar"
 
 [node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1697763340]
 custom_minimum_size = Vector2(360, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Créditos
-"
+text = "Créditos"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1111137203]
 custom_minimum_size = Vector2(360, 80)
