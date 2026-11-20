@@ -72,8 +72,11 @@ func say_all(streams: Array[AudioStream]) -> bool:
 
 ## Toca um arquivo pelo caminho. Se não existir, avisa e a tela segue normalmente.
 func say_file(path: String) -> bool:
+	return await say(load_audio(path))
+
+## Carrega um áudio pelo caminho. Devolve null (com aviso) se o arquivo não existir.
+static func load_audio(path: String) -> AudioStream:
 	if not ResourceLoader.exists(path):
 		push_warning("Narrator: áudio não encontrado: %s" % path)
-		_interrupt()   # a fala anterior não deve continuar
-		return true
-	return await say(load(path) as AudioStream)
+		return null
+	return load(path) as AudioStream

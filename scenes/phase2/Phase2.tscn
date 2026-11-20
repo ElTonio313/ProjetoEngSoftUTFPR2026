@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://l4ssu3gam510" path="res://scenes/phase2/drop_zone.gd" id="3_yqm5v"]
 [ext_resource type="AudioStream" uid="uid://bjfy08ogjxagq" path="res://assets/audio/narration/phase2/intro/MammalsText.ogg" id="4_qafwq"]
 [ext_resource type="AudioStream" uid="uid://bldj5726bqxrq" path="res://assets/audio/narration/phase2/intro/BirdsText.ogg" id="5_4wf8w"]
-[ext_resource type="AudioStream" uid="uid://6h0atdjnvrxi" path="res://assets/audio/narration/phase2/animals/capivara.ogg" id="6_kn6au"]
+[ext_resource type="AudioStream" uid="uid://6porg8qew4me" path="res://assets/audio/narration/phase2/Instruction.ogg" id="6_qafwq"]
+[ext_resource type="AudioStream" uid="uid://0qc7s8uyxrci" path="res://assets/audio/narration/phase2/feedback_correct.ogg" id="7_4wf8w"]
+[ext_resource type="AudioStream" uid="uid://bq3hfscldl8tu" path="res://assets/audio/narration/phase2/feedback_wrong.ogg" id="8_er5s1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n77a"]
 bg_color = Color(0.101960786, 0.5019608, 0.2, 1)
@@ -68,7 +70,9 @@ intro_audio = ExtResource("2_kn6au")
 reptiles_audio = ExtResource("3_7b7cu")
 mammals_audio = ExtResource("4_qafwq")
 bird_audio = ExtResource("5_4wf8w")
-capivara = ExtResource("6_kn6au")
+instruction_audio = ExtResource("6_qafwq")
+correct_audio = ExtResource("7_4wf8w")
+wrong_audio = ExtResource("8_er5s1")
 
 [node name="Background" type="ColorRect" parent="." unique_id=971501191]
 layout_mode = 1

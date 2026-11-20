@@ -2,6 +2,7 @@ extends Control
 
 const COLOR_RIGHT := Color(0.1, 0.5, 0.2)
 const COLOR_WRONG := Color(0.6901961, 0, 0.1254902)  # mesmos tons do quiz da Fase 1
+const NARRATION_DIR := "res://assets/audio/narration/phase2/"
 
 @onready var intro_panel: Control = %IntroPanel
 @onready var continue_button: Button = %ContinueButton
@@ -16,11 +17,15 @@ const COLOR_WRONG := Color(0.6901961, 0, 0.1254902)  # mesmos tons do quiz da Fa
 @onready var finish_panel: Control = %FinishPanel
 @onready var finish_title: Label = %FinishTitle
 @onready var finish_text: Label = %FinishText
+#audios intro
 @export var intro_audio: AudioStream
 @export var reptiles_audio: AudioStream
 @export var mammals_audio: AudioStream
 @export var bird_audio: AudioStream
-@export var capivara: AudioStream
+#audios fase 2
+@export var instruction_audio: AudioStream   
+@export var correct_audio: AudioStream       
+@export var wrong_audio: AudioStream
 
 var narrator := Narrator.new()
 var manager := ClassificationManager.new()
@@ -56,7 +61,7 @@ func _ready() -> void:
 func _on_continue_button_pressed() -> void:
 	intro_panel.hide()
 	manager.next_exercise()  # apresenta o 1º animal e inicia o cronômetro dele
-	narrator.say(capivara)
+	
 	
 # o aluno clicou em "Próximo animal".
 func _on_next_button_pressed() -> void:
@@ -64,13 +69,21 @@ func _on_next_button_pressed() -> void:
 	manager.next_exercise()
 	
 
+# Monta o caminho do áudio a partir do id do animal e o carrega (ou devolve null).
+func _animal_audio(folder: String, animal_id: String) -> AudioStream:
+	return Narrator.load_audio("%s%s/%s.ogg" % [NARRATION_DIR, folder, animal_id])
 
 func _on_exercise_ready(animal: Animal, _number: int, _total: int) -> void:
 	animal_card.set_animal_name(animal.display_name)
 	_set_animal_draggable(true)
 	feedback_label.text = ""
 	next_button.hide()                                      
-	_update_progress()                                      
+	_update_progress()   
+	var parts: Array[AudioStream] = []
+	if manager.current_index == 0:
+		parts.append(instruction_audio)           # a instrução só no primeiro animal
+	parts.append(_animal_audio("animals", animal.id))
+	narrator.say_all(parts)                                   
 
 
 func _on_animal_dropped(category: String) -> void:
@@ -86,8 +99,12 @@ func _on_answer_checked(is_correct: bool, hint: String) -> void:
 		next_button.text = "Concluir" if is_last else "Próximo animal"
 		next_button.show()
 		next_button.grab_focus()
+		narrator.say(correct_audio)
 	else:
 		_show_feedback("✘ Não foi dessa vez. Tente de novo.\nDica: " + hint, COLOR_WRONG)
+		var animal := manager.get_current_animal()
+		var parts: Array[AudioStream] = [wrong_audio, _animal_audio("hints", animal.id)]
+		narrator.say_all(parts)
 
 func _on_phase_finished(result: Dictionary) -> void:
 	GameData.set_phase2_result(result)   # 1) guarda o resultado da Fase 2
