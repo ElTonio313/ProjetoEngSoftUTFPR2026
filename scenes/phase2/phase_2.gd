@@ -16,7 +16,13 @@ const COLOR_WRONG := Color(0.6901961, 0, 0.1254902)  # mesmos tons do quiz da Fa
 @onready var finish_panel: Control = %FinishPanel
 @onready var finish_title: Label = %FinishTitle
 @onready var finish_text: Label = %FinishText
+@export var intro_audio: AudioStream
+@export var reptiles_audio: AudioStream
+@export var mammals_audio: AudioStream
+@export var bird_audio: AudioStream
+@export var capivara: AudioStream
 
+var narrator := Narrator.new()
 var manager := ClassificationManager.new()
 var _feedback_tween: Tween
 
@@ -24,9 +30,11 @@ var _feedback_tween: Tween
 func _ready() -> void:
 	manager.name = "ClassificationManager"
 	add_child(manager)
+	add_child(narrator)
+	narrator.say_all([intro_audio, mammals_audio, reptiles_audio, bird_audio])
 	manager.exercise_ready.connect(_on_exercise_ready)
 	manager.answer_checked.connect(_on_answer_checked)
-	manager.phase_finished.connect(_on_phase_finished)     
+	manager.phase_finished.connect(_on_phase_finished)
 
 	for zone in [mammals_zone, reptiles_zone, birds_zone]:
 		zone.animal_dropped.connect(_on_animal_dropped)
@@ -48,12 +56,13 @@ func _ready() -> void:
 func _on_continue_button_pressed() -> void:
 	intro_panel.hide()
 	manager.next_exercise()  # apresenta o 1º animal e inicia o cronômetro dele
-
-
+	narrator.say(capivara)
+	
 # o aluno clicou em "Próximo animal".
 func _on_next_button_pressed() -> void:
 	next_button.hide()
 	manager.next_exercise()
+	
 
 
 func _on_exercise_ready(animal: Animal, _number: int, _total: int) -> void:
