@@ -8,8 +8,13 @@
 [ext_resource type="AudioStream" uid="uid://bjfy08ogjxagq" path="res://assets/audio/narration/phase2/intro/MammalsText.ogg" id="4_qafwq"]
 [ext_resource type="AudioStream" uid="uid://bldj5726bqxrq" path="res://assets/audio/narration/phase2/intro/BirdsText.ogg" id="5_4wf8w"]
 [ext_resource type="AudioStream" uid="uid://6porg8qew4me" path="res://assets/audio/narration/phase2/Instruction.ogg" id="6_qafwq"]
+[ext_resource type="AudioStream" uid="uid://dv33ef0k73w7s" path="res://assets/audio/narration/phase2/intro/continueAudio.ogg" id="6_xdi5w"]
 [ext_resource type="AudioStream" uid="uid://0qc7s8uyxrci" path="res://assets/audio/narration/phase2/feedback_correct.ogg" id="7_4wf8w"]
 [ext_resource type="AudioStream" uid="uid://bq3hfscldl8tu" path="res://assets/audio/narration/phase2/feedback_wrong.ogg" id="8_er5s1"]
+[ext_resource type="AudioStream" uid="uid://n54ssiguwvi6" path="res://assets/audio/narration/phase2/birdsZoneAudio.ogg" id="9_xfvg5"]
+[ext_resource type="AudioStream" uid="uid://usnff7cmris1" path="res://assets/audio/narration/phase2/mammalsZoneAudio.ogg" id="10_tu58y"]
+[ext_resource type="AudioStream" uid="uid://xs18g7on0kps" path="res://assets/audio/narration/phase2/reptilesZoneAudio.ogg" id="11_xdi5w"]
+[ext_resource type="AudioStream" uid="uid://8sr54vdyyl2w" path="res://assets/audio/narration/phase2/nextAnimalAudio.ogg" id="13_y62f5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n77a"]
 bg_color = Color(0.101960786, 0.5019608, 0.2, 1)
@@ -70,9 +75,14 @@ intro_audio = ExtResource("2_kn6au")
 reptiles_audio = ExtResource("3_7b7cu")
 mammals_audio = ExtResource("4_qafwq")
 bird_audio = ExtResource("5_4wf8w")
+continue_audio = ExtResource("6_xdi5w")
 instruction_audio = ExtResource("6_qafwq")
 correct_audio = ExtResource("7_4wf8w")
 wrong_audio = ExtResource("8_er5s1")
+bird_zone_audio = ExtResource("9_xfvg5")
+mammal_zone_audio = ExtResource("10_tu58y")
+reptiles_zone_audio = ExtResource("11_xdi5w")
+next_animal_audio = ExtResource("13_y62f5")
 
 [node name="Background" type="ColorRect" parent="." unique_id=971501191]
 layout_mode = 1
@@ -260,7 +270,6 @@ horizontal_alignment = 1
 
 [node name="IntroPanel" type="ColorRect" parent="." unique_id=888097193]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -375,5 +384,11 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 text = "Continuar"
 
+[connection signal="mouse_entered" from="MarginContainer/MainColumn/AnimalArea/AnimalCard" to="." method="_on_animal_card_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/MainColumn/FeedbackRow/NextButton" to="." method="_on_next_button_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/MainColumn/FeedbackRow/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/MainColumn/ZonesRow/MammalsZone" to="." method="_on_mammals_zone_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/MainColumn/ZonesRow/ReptilesZone" to="." method="_on_reptiles_zone_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/MainColumn/ZonesRow/BirdsZone" to="." method="_on_birds_zone_mouse_entered"]
+[connection signal="mouse_entered" from="IntroPanel/IntroMargin/IntroColumn/ContinueButton" to="." method="_on_continue_button_mouse_entered"]
 [connection signal="pressed" from="IntroPanel/IntroMargin/IntroColumn/ContinueButton" to="." method="_on_continue_button_pressed"]

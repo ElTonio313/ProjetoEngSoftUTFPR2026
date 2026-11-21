@@ -22,10 +22,16 @@ const NARRATION_DIR := "res://assets/audio/narration/phase2/"
 @export var reptiles_audio: AudioStream
 @export var mammals_audio: AudioStream
 @export var bird_audio: AudioStream
+@export var continue_audio: AudioStream
 #audios fase 2
 @export var instruction_audio: AudioStream   
 @export var correct_audio: AudioStream       
 @export var wrong_audio: AudioStream
+@export var bird_zone_audio: AudioStream
+@export var mammal_zone_audio: AudioStream
+@export var reptiles_zone_audio: AudioStream
+@export var next_animal_audio: AudioStream
+
 
 var narrator := Narrator.new()
 var manager := ClassificationManager.new()
@@ -134,3 +140,19 @@ func _set_animal_draggable(value: bool) -> void:
 	animal_card.can_drag = value
 	animal_card.mouse_default_cursor_shape = \
 		Control.CURSOR_POINTING_HAND if value else Control.CURSOR_ARROW
+
+
+func _on_mammals_zone_mouse_entered() -> void:
+	narrator.say(mammal_zone_audio)
+
+func _on_reptiles_zone_mouse_entered() -> void:
+	narrator.say(reptiles_zone_audio)
+
+func _on_birds_zone_mouse_entered() -> void:
+	narrator.say(bird_zone_audio)
+
+func _on_next_button_mouse_entered() -> void:
+	narrator.say(next_animal_audio)
+
+func _on_continue_button_mouse_entered() -> void:
+	narrator.say(continue_audio)
