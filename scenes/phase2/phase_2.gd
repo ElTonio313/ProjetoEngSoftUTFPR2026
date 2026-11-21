@@ -32,7 +32,7 @@ const NARRATION_DIR := "res://assets/audio/narration/phase2/"
 @export var reptiles_zone_audio: AudioStream
 @export var next_animal_audio: AudioStream
 
-
+var _animal_name_audio: AudioStream   # áudio do nome do animal atual (reaproveitado no hover)
 var narrator := Narrator.new()
 var manager := ClassificationManager.new()
 var _feedback_tween: Tween
@@ -42,7 +42,8 @@ func _ready() -> void:
 	manager.name = "ClassificationManager"
 	add_child(manager)
 	add_child(narrator)
-	narrator.say_all([intro_audio, mammals_audio, reptiles_audio, bird_audio])
+	_narrate_intro()
+	animal_card.mouse_entered.connect(_on_animal_card_mouse_entered)
 	manager.exercise_ready.connect(_on_exercise_ready)
 	manager.answer_checked.connect(_on_answer_checked)
 	manager.phase_finished.connect(_on_phase_finished)
@@ -85,11 +86,8 @@ func _on_exercise_ready(animal: Animal, _number: int, _total: int) -> void:
 	feedback_label.text = ""
 	next_button.hide()                                      
 	_update_progress()   
-	var parts: Array[AudioStream] = []
-	if manager.current_index == 0:
-		parts.append(instruction_audio)           # a instrução só no primeiro animal
-	parts.append(_animal_audio("animals", animal.id))
-	narrator.say_all(parts)                                   
+	_animal_name_audio = _animal_audio("animals", animal.id)
+	_narrate_exercise(manager.current_index == 0)                                  
 
 
 func _on_animal_dropped(category: String) -> void:
@@ -141,18 +139,36 @@ func _set_animal_draggable(value: bool) -> void:
 	animal_card.mouse_default_cursor_shape = \
 		Control.CURSOR_POINTING_HAND if value else Control.CURSOR_ARROW
 
+func _narrate_intro() -> void:
+	var parts: Array[AudioStream] = [intro_audio, mammals_audio, reptiles_audio, bird_audio]
+	narrator.say_all(parts)
+
+
+# Instrução (opcional) e nome do animal atual.
+func _narrate_exercise(with_instruction: bool) -> void:
+	var parts: Array[AudioStream] = []
+	if with_instruction:
+		parts.append(instruction_audio)
+	parts.append(_animal_name_audio)
+	narrator.say_all(parts)
+
+
+func _on_animal_card_mouse_entered() -> void:
+	if _animal_name_audio == null:
+		return
+	narrator.say(_animal_name_audio, Narrator.PRIORITY_HOVER)
 
 func _on_mammals_zone_mouse_entered() -> void:
-	narrator.say(mammal_zone_audio)
+	narrator.say(mammal_zone_audio, Narrator.PRIORITY_HOVER)
 
 func _on_reptiles_zone_mouse_entered() -> void:
-	narrator.say(reptiles_zone_audio)
+	narrator.say(reptiles_zone_audio, Narrator.PRIORITY_HOVER)
 
 func _on_birds_zone_mouse_entered() -> void:
-	narrator.say(bird_zone_audio)
+	narrator.say(bird_zone_audio, Narrator.PRIORITY_HOVER)
 
 func _on_next_button_mouse_entered() -> void:
-	narrator.say(next_animal_audio)
+	narrator.say(next_animal_audio, Narrator.PRIORITY_HOVER)
 
 func _on_continue_button_mouse_entered() -> void:
-	narrator.say(continue_audio)
+	narrator.say(continue_audio, Narrator.PRIORITY_HOVER)

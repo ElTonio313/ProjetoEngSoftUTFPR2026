@@ -13,6 +13,10 @@ signal _ended(completed: bool)
 
 var _player := AudioStreamPlayer.new()
 var _busy: bool = false   # há uma fala em andamento?
+const PRIORITY_HOVER := 0    # ajuda ao passar o mouse: nunca corta uma fala principal
+const PRIORITY_NORMAL := 1   # instruções, nomes, feedback (padrão)
+
+var _current_priority: int = PRIORITY_NORMAL
 
 
 func _ready() -> void:
@@ -22,18 +26,23 @@ func _ready() -> void:
 
 
 ## Toca o áudio, interrompendo qualquer fala em andamento.
-func say(stream: AudioStream) -> bool:
+func say(stream: AudioStream, priority: int = PRIORITY_NORMAL) -> bool:
 	if not is_inside_tree():
 		push_warning("Narrator: use add_child() antes de chamar say().")
+		return false
+
+	# Há uma fala mais importante tocando: esta é ignorada.
+	if _busy and priority < _current_priority:
 		return false
 
 	_interrupt()
 
 	if stream == null:
 		push_warning("Narrator: nenhum áudio definido.")
-		return true   # sem áudio, a sequência segue normalmente
+		return true
 
 	_busy = true
+	_current_priority = priority
 	_player.stream = stream
 	_player.play()
 	var completed: bool = await _ended
@@ -62,13 +71,12 @@ func _on_player_finished() -> void:
 		_ended.emit(true)
 
 ## Toca várias falas em ordem. Para se alguma for interrompida (devolve false).
-func say_all(streams: Array[AudioStream]) -> bool:
+func say_all(streams: Array[AudioStream], priority: int = PRIORITY_NORMAL) -> bool:
 	for stream: AudioStream in streams:
-		var completed: bool = await say(stream)
+		var completed: bool = await say(stream, priority)
 		if not completed:
 			return false
 	return true
-
 
 ## Toca um arquivo pelo caminho. Se não existir, avisa e a tela segue normalmente.
 func say_file(path: String) -> bool:
