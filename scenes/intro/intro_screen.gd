@@ -17,14 +17,21 @@ const NEXT_SCENE := "res://scenes/quiz/QuizScreen.tscn"
 @onready var back_button: Button = %BackButton
 @onready var next_button: Button = %NextButton
 
+const BACK_AUDIO := "res://assets/audio/narration/intro_phase1/backAudio.ogg"        # "Voltar"
+const CONTINUE_AUDIO := "res://assets/audio/narration/phase2/intro/continueAudio.ogg"  # "Continuar"
+var narrator := Narrator.new()
+var _title_audio_path: String = ""
 var _pages: Array = []
 var _index: int = 0
-var _start_text: String = "Começar o quiz"
+var _start_text: String = "Continuar"
 
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back_pressed)
 	next_button.pressed.connect(_on_next_pressed)
+	add_child(narrator)
+	back_button.mouse_entered.connect(_on_back_hover)
+	next_button.mouse_entered.connect(_on_next_hover)
 	if not _load_data():
 		# Sem o arquivo de textos, não trava o jogo: vai direto para o quiz.
 		push_warning("Introdução não encontrada em %s; indo direto ao quiz." % DATA_PATH)
@@ -41,7 +48,8 @@ func _load_data() -> bool:
 		return false
 	_pages = parsed["pages"]
 	title_label.text = str(parsed.get("title", "Antes de começar"))
-	_start_text = str(parsed.get("start_text", "Começar o quiz"))
+	_start_text = str(parsed.get("start_text", "Continuar"))
+	_title_audio_path = str(parsed.get("title_audio", ""))
 	return true
 
 
@@ -54,8 +62,16 @@ func _show_page() -> void:
 
 	back_button.visible = _index > 0
 	var is_last := _index == _pages.size() - 1
-	next_button.text = _start_text if is_last else "Próxima"
+	next_button.text = _start_text if is_last else "Continuar"
 	next_button.grab_focus()   # Enter ou Espaço avançam
+	
+	var parts: Array[AudioStream] = []
+	if _index == 0 and _title_audio_path != "":
+		parts.append(Narrator.load_audio(_title_audio_path))   # o título só na primeira página
+	var page_audio := str(page.get("audio_path", ""))
+	if page_audio != "":
+		parts.append(Narrator.load_audio(page_audio))
+	narrator.say_all(parts)
 
 
 func _show_media(video_path: String, image_path: String) -> void:
@@ -89,3 +105,12 @@ func _on_next_pressed() -> void:
 
 func _go_to_quiz() -> void:
 	get_tree().change_scene_to_file(NEXT_SCENE)
+
+func _on_back_hover() -> void:
+	narrator.say(Narrator.load_audio(BACK_AUDIO), Narrator.PRIORITY_HOVER)
+
+
+# Na última página o botão diz "Começar o quiz" (sem áudio), então só vale nas outras.
+func _on_next_hover() -> void:
+	if _index < _pages.size() - 1:
+		narrator.say(Narrator.load_audio(CONTINUE_AUDIO), Narrator.PRIORITY_HOVER)

@@ -12,6 +12,7 @@ var hint: String = ""             # dica: botão "Dica" e também mostrada quand
 var category: String = ""         # "fauna", "flora", "conservacao"...
 var video_path: String = ""       # vídeo-tutorial (res://assets/videos/...)
 var image_path: String = ""       # imagem da pergunta (res://assets/images/...)
+var id: String = ""               # id da pergunta no JSON (nome da pasta dos áudios)
 
 
 ## Cria uma Question a partir de um Dictionary (um item do JSON).
@@ -33,6 +34,7 @@ static func from_dict(data: Dictionary) -> Question:
 		return null
 
 	var q := Question.new()
+	q.id = str(data.get("id", ""))
 	q.text = str(data["text"])
 	for option in raw_options:
 		q.options.append(str(option))

@@ -42,9 +42,16 @@ var _sfx_wrong: AudioStreamPlayer
 var _icon_right: ImageTexture   # símbolo de certo (✓) desenhado por código
 var _icon_wrong: ImageTexture   # símbolo de errado (✗) desenhado por código
 
+# Frases fixas, reaproveitadas da Fase 2. O texto da tela precisa ser igual ao áudio.
+const AUDIO_CORRECT := "res://assets/audio/narration/phase2/feedback_correct.ogg"  # "Acertou! Muito bem!"
+const AUDIO_WRONG := "res://assets/audio/narration/phase2/feedback_wrong.ogg"      # "Não foi dessa vez. Tente de novo."
+const AUDIO_FINISH := "res://assets/audio/narration/phase1/finish.ogg"             # "Fase 1 concluída. Parabéns!" (a gravar)
+var narrator := Narrator.new()
+var _question: Question   # pergunta atual, para achar os áudios dela
 
 func _ready() -> void:
 	add_child(quiz)
+	add_child(narrator)
 	_sfx_right = _make_sfx(SOUND_RIGHT)
 	_sfx_wrong = _make_sfx(SOUND_WRONG)
 	_icon_right = _make_symbol(true)
@@ -98,6 +105,7 @@ func _close_about() -> void:
 # ------------------------------------------------------- Sinais do quiz
 
 func _on_question_ready(question: Question, number: int, total: int) -> void:
+	_question = question
 	progress_label.text = "Pergunta %d de %d" % [number, total]
 	progress_bar.max_value = total
 	progress_bar.value = number - 1
@@ -111,13 +119,22 @@ func _on_question_ready(question: Question, number: int, total: int) -> void:
 	restart_button.hide()
 
 	_clear_options()
+	var parts: Array[AudioStream] = [Narrator.load_audio(QuizAudio.question_path(question))]
 	for i in question.options.size():
 		var button := Button.new()
 		button.text = question.options[i]
 		button.custom_minimum_size = Vector2(360, 80)
 		button.add_theme_font_size_override("font_size", 36)
 		button.pressed.connect(_on_option_pressed.bind(i))
+		button.mouse_entered.connect(_on_option_hover.bind(i))
 		options_grid.add_child(button)
+		parts.append(Narrator.load_audio(QuizAudio.option_path(question, question.options[i])))
+	narrator.say_all(parts)   # pergunta e depois cada alternativa, na ordem da tela
+
+# Passar o mouse numa alternativa repete o nome dela (prioridade baixa: não corta a narração principal).
+func _on_option_hover(index: int) -> void:
+	var audio := Narrator.load_audio(QuizAudio.option_path(_question, _question.options[index]))
+	narrator.say(audio, Narrator.PRIORITY_HOVER)
 
 
 func _on_option_pressed(index: int) -> void:
@@ -127,17 +144,23 @@ func _on_option_pressed(index: int) -> void:
 ## Errou: pinta e trava só essa alternativa, mostra a dica e deixa tentar de novo.
 func _on_wrong_answer(wrong_index: int, hint: String) -> void:
 	_paint_button(options_grid.get_child(wrong_index) as Button, COLOR_WRONG, _icon_wrong)
-	result_label.text = "Errado. Tente de novo."
+	result_label.text = "Não foi dessa vez. Tente de novo."   # igual ao áudio
 	result_label.add_theme_color_override("font_color", COLOR_WRONG)
 	if hint != "":
-		_on_hint_shown(hint)
-	_play(_sfx_wrong)
-
+		_show_hint(hint)
+	# o efeito sonoro entra na própria fila da narração: nada toca ao mesmo tempo
+	var parts: Array[AudioStream] = [_sfx_wrong.stream]
+	if hint != "":
+		parts.append(Narrator.load_audio(QuizAudio.hint_path(_question)))
+	narrator.say_all(parts)
 
 func _on_hint_shown(hint: String) -> void:
+	_show_hint(hint)
+	narrator.say(Narrator.load_audio(QuizAudio.hint_path(_question)))
+	
+func _show_hint(hint: String) -> void:
 	_set_feedback("Dica: %s" % hint, COLOR_HINT)
 	hint_button.disabled = true
-
 
 ## Acertou: trava tudo, mostra a explicação e o botão "Próxima".
 func _on_answer_checked(first_try: bool, correct_index: int, feedback: String) -> void:
@@ -145,9 +168,12 @@ func _on_answer_checked(first_try: bool, correct_index: int, feedback: String) -
 		(button as Button).disabled = true
 	_paint_button(options_grid.get_child(correct_index) as Button, COLOR_RIGHT, _icon_right)
 
-	result_label.text = "Correto!" if first_try else "Agora você acertou!"
+	result_label.text = "Acertou! Muito bem!"   # igual ao áudio (vale para acerto de primeira ou não)
 	result_label.add_theme_color_override("font_color", COLOR_RIGHT)
 	_set_feedback(feedback, COLOR_TEXT)
+	var parts: Array[AudioStream] = [_sfx_right.stream,
+			Narrator.load_audio(QuizAudio.feedback_path(_question))]
+	narrator.say_all(parts)
 	_play(_sfx_right)
 
 	hint_button.hide()
@@ -198,6 +224,7 @@ func _on_quiz_finished(result: Dictionary) -> void:
 	next_button.show()
 	restart_button.show()
 	next_button.grab_focus()
+	narrator.say(Narrator.load_audio(AUDIO_FINISH))
 
 
 # ------------------------------------------------------------ Auxiliares

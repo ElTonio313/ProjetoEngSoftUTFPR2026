@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://dcjy2n3yk0dkg"]
 
-[ext_resource type="Script" path="res://scenes/intro/intro_screen.gd" id="1_intro"]
+[ext_resource type="Script" uid="uid://ow40v6req6nn" path="res://scenes/intro/intro_screen.gd" id="1_intro"]
 
-[node name="IntroScreen" type="Control"]
+[node name="IntroScreen" type="Control" unique_id=270560950]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_intro")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1396644847]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9490196, 0.9490196, 0.9490196, 1)
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="." unique_id=882927696]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,11 +32,11 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 30
 
-[node name="Column" type="VBoxContainer" parent="Margin"]
+[node name="Column" type="VBoxContainer" parent="Margin" unique_id=1953577481]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="TitleLabel" type="Label" parent="Margin/Column"]
+[node name="TitleLabel" type="Label" parent="Margin/Column" unique_id=768101585]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
@@ -44,7 +44,7 @@ theme_override_font_sizes/font_size = 44
 text = "Antes de começar"
 horizontal_alignment = 1
 
-[node name="PageLabel" type="Label" parent="Margin/Column"]
+[node name="PageLabel" type="Label" parent="Margin/Column" unique_id=88577840]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
@@ -52,7 +52,7 @@ theme_override_font_sizes/font_size = 28
 text = "Página 1 de 3"
 horizontal_alignment = 1
 
-[node name="PageTitle" type="Label" parent="Margin/Column"]
+[node name="PageTitle" type="Label" parent="Margin/Column" unique_id=1915710853]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.1, 0.5, 0.2, 1)
@@ -60,20 +60,20 @@ theme_override_font_sizes/font_size = 40
 text = "Título"
 horizontal_alignment = 1
 
-[node name="MediaBox" type="CenterContainer" parent="Margin/Column"]
+[node name="MediaBox" type="CenterContainer" parent="Margin/Column" unique_id=1344985864]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
-[node name="Video" type="VideoStreamPlayer" parent="Margin/Column/MediaBox"]
+[node name="Video" type="VideoStreamPlayer" parent="Margin/Column/MediaBox" unique_id=1791629170]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(444, 250)
 layout_mode = 2
 expand = true
 
-[node name="Picture" type="TextureRect" parent="Margin/Column/MediaBox"]
+[node name="Picture" type="TextureRect" parent="Margin/Column/MediaBox" unique_id=300158434]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(444, 250)
@@ -81,7 +81,7 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="PageText" type="Label" parent="Margin/Column"]
+[node name="PageText" type="Label" parent="Margin/Column" unique_id=1302257181]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -93,22 +93,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ButtonRow" type="HBoxContainer" parent="Margin/Column"]
+[node name="ButtonRow" type="HBoxContainer" parent="Margin/Column" unique_id=719490949]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 24
 
-[node name="BackButton" type="Button" parent="Margin/Column/ButtonRow"]
+[node name="BackButton" type="Button" parent="Margin/Column/ButtonRow" unique_id=1642645945]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Voltar"
 
-[node name="NextButton" type="Button" parent="Margin/Column/ButtonRow"]
+[node name="NextButton" type="Button" parent="Margin/Column/ButtonRow" unique_id=1066228819]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(360, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Próxima"
+text = "Continuar"
