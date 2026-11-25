@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://csu3sewj24mo4"]
 
 [ext_resource type="Script" uid="uid://bt5305gqee4mg" path="res://scenes/quiz/quiz_screen.gd" id="1_quiz"]
+[ext_resource type="AudioStream" uid="uid://c50vm8wtafgeq" path="res://assets/audio/narration/phase1/aboutAudio.ogg" id="2_7dw06"]
 [ext_resource type="PackedScene" path="res://scenes/ui/AudioControls.tscn" id="2_audio"]
+[ext_resource type="AudioStream" uid="uid://beyaok5x20uco" path="res://assets/audio/narration/phase1/hintAudioB.ogg" id="3_rja7s"]
+[ext_resource type="AudioStream" uid="uid://bpi8e51v83nwk" path="res://assets/audio/narration/phase1/aboutTextAudio.ogg" id="4_fmq1d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
 bg_color = Color(0.1, 0.5, 0.2, 1)
@@ -34,6 +37,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_quiz")
+about_audio = ExtResource("2_7dw06")
+hint_audio = ExtResource("3_rja7s")
+about_text_audio = ExtResource("4_fmq1d")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1589128195]
 layout_mode = 1
@@ -226,3 +232,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 text = "Fechar"
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/ActionRow/HintButton" to="." method="_on_hint_button_mouse_entered"]
+[connection signal="mouse_entered" from="TopBar/AboutButton" to="." method="_on_about_button_mouse_entered"]
+[connection signal="pressed" from="TopBar/AboutButton" to="." method="_on_about_button_pressed"]

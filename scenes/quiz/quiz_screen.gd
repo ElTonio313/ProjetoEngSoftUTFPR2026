@@ -10,8 +10,8 @@ extends Control
 ##   - No fim, "Continuar" leva à Fase 2 (GameState.go_to_phase2()).
 ## Barra de cima: "Sobre" (explica a fase) e controles de som (scenes/ui/AudioControls).
 
-const SOUND_RIGHT := "res://assets/sounds/correct.wav"
-const SOUND_WRONG := "res://assets/sounds/wrong.wav"
+const SOUND_RIGHT := "res://assets/sounds/correctAudio.ogg"
+const SOUND_WRONG := "res://assets/sounds/wrongAudio.ogg"
 const COLOR_TEXT := Color(0.101960786, 0.101960786, 0.101960786)
 const COLOR_RIGHT := Color(0.1, 0.5, 0.2)
 const COLOR_WRONG := Color(0.6901961, 0, 0.1254902)  # mesmo vermelho da tela de nome
@@ -34,6 +34,9 @@ const CATEGORY_NAMES := {
 @onready var about_button: Button = %AboutButton
 @onready var about_overlay: Control = %AboutOverlay
 @onready var close_about_button: Button = %CloseAboutButton
+@export var about_audio: AudioStream
+@export var hint_audio: AudioStream
+@export var about_text_audio: AudioStream
 
 var quiz := QuizManager.new()
 var _finished: bool = false
@@ -290,3 +293,13 @@ func _make_sfx(path: String) -> AudioStreamPlayer:
 func _play(player: AudioStreamPlayer) -> void:
 	if player.stream != null:
 		player.play()
+
+
+func _on_about_button_mouse_entered() -> void:
+	narrator.say(about_audio, Narrator.PRIORITY_HOVER)
+
+func _on_hint_button_mouse_entered() -> void:
+	narrator.say(hint_audio, Narrator.PRIORITY_HOVER)
+
+func _on_about_button_pressed() -> void:
+	narrator.say(about_text_audio, Narrator.PRIORITY_HOVER)

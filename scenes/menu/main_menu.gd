@@ -27,3 +27,13 @@ func _on_play_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_play_button_mouse_entered() -> void:
+	narrator.say(play_audio, Narrator.PRIORITY_HOVER)
+
+func _on_credits_button_mouse_entered() -> void:
+	narrator.say(credits_audio, Narrator.PRIORITY_HOVER)
+
+func _on_quit_button_mouse_entered() -> void:
+	narrator.say(quit_audio, Narrator.PRIORITY_HOVER)
