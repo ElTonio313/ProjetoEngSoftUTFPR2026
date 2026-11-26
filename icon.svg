@@ -1,1 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><rect width="124" height="124" x="2" y="2" fill="#363d52" stroke="#212532" stroke-width="4" rx="14"/><g fill="#fff" transform="translate(12.322 12.322)scale(.101)"><path d="M105 673v33q407 354 814 0v-33z"/><path fill="#478cbf" d="m105 673 152 14q12 1 15 14l4 67 132 10 8-61q2-11 15-15h162q13 4 15 15l8 61 132-10 4-67q3-13 15-14l152-14V427q30-39 56-81-35-59-83-108-43 20-82 47-40-37-88-64 7-51 8-102-59-28-123-42-26 43-46 89-49-7-98 0-20-46-46-89-64 14-123 42 1 51 8 102-48 27-88 64-39-27-82-47-48 49-83 108 26 42 56 81zm0 33v39c0 276 813 276 814 0v-39l-134 12-5 69q-2 10-14 13l-162 11q-12 0-16-11l-10-65H446l-10 65q-4 11-16 11l-162-11q-12-3-14-13l-5-69z"/><path d="M483 600c0 34 58 34 58 0v-86c0-34-58-34-58 0z"/><circle cx="725" cy="526" r="90"/><circle cx="299" cy="526" r="90"/></g><g fill="#414042" transform="translate(12.322 12.322)scale(.101)"><circle cx="307" cy="532" r="60"/><circle cx="717" cy="532" r="60"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8F5E9"/>
+      <stop offset="65%" stop-color="#C8E6C9"/>
+      <stop offset="100%" stop-color="#81C784"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2E7D32"/>
+      <stop offset="50%" stop-color="#1B5E20"/>
+      <stop offset="100%" stop-color="#2E7D32"/>
+    </linearGradient>
+  </defs>
+  <!-- Frame -->
+  <rect width="120" height="120" x="4" y="4" rx="22" fill="url(#sky)" stroke="#1B5E20" stroke-width="6"/>
+  <!-- Pantanal Sun -->
+  <circle cx="92" cy="36" r="16" fill="#FFD54F" stroke="#F9A825" stroke-width="3"/>
+  <!-- River / Wetland base -->
+  <path d="M 8 92 Q 38 84 64 92 T 120 90 L 120 104 Q 120 120 104 120 L 24 120 Q 8 120 8 104 Z" fill="url(#water)"/>
+  <!-- Aguape leaf -->
+  <ellipse cx="32" cy="102" rx="14" ry="6" fill="#66BB6A"/>
+  <circle cx="32" cy="97" r="4" fill="#AB47BC"/>
+  <!-- Stylized Tuiuiu (Jabiru) -->
+  <!-- Legs -->
+  <line x1="60" y1="78" x2="58" y2="104" stroke="#263238" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="68" y1="78" x2="70" y2="104" stroke="#263238" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Body -->
+  <ellipse cx="62" cy="68" rx="20" ry="13" fill="#FFFFFF" stroke="#CFD8DC" stroke-width="2"/>
+  <path d="M 46 66 Q 62 58 76 70" fill="none" stroke="#B0BEC5" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Red Collar -->
+  <path d="M 67 52 L 77 52 L 78 60 L 66 60 Z" fill="#D32F2F"/>
+  <!-- Black Neck & Head -->
+  <path d="M 68 34 L 76 34 L 76 52 L 68 52 Z" fill="#263238"/>
+  <circle cx="72" cy="32" r="7" fill="#263238"/>
+  <!-- Eye -->
+  <circle cx="74" cy="31" r="1.8" fill="#FFFFFF"/>
+  <!-- Strong Beak -->
+  <path d="M 78 29 L 104 33 L 78 36 Z" fill="#263238"/>
+</svg>

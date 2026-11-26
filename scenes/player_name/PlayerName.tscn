@@ -1,9 +1,54 @@
-[gd_scene format=3 uid="uid://behibav8cjpne"]
+[gd_scene load_steps=5 format=3 uid="uid://behibav8cjpne"]
 
 [ext_resource type="Script" uid="uid://lg8g3511ff12" path="res://scenes/player_name/player_name.gd" id="1_f6v1l"]
-[ext_resource type="AudioStream" uid="uid://br6orpjmj3srs" path="res://assets/audio/narration/player_name/PlayerNameText.ogg" id="2_w2mb8"]
-[ext_resource type="AudioStream" uid="uid://cb42i7nskdotq" path="res://assets/audio/narration/player_name/PlayerNameError.ogg" id="3_jcg7y"]
-[ext_resource type="AudioStream" uid="uid://d287gla613xfv" path="res://assets/audio/narration/player_name/PlayerNameLetters.ogg" id="4_5nlk5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+content_margin_left = 32.0
+content_margin_top = 20.0
+content_margin_right = 32.0
+content_margin_bottom = 20.0
+bg_color = Color(0.980392, 0.972549, 0.94902, 0.97)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_guide_box"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.92549, 0.964706, 0.929412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.45, 0.70, 0.48, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avatar"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="PlayerName" type="Control" unique_id=1768868739]
 layout_mode = 3
@@ -13,9 +58,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f6v1l")
-prompt_audio = ExtResource("2_w2mb8")
-error_empty_audio = ExtResource("3_jcg7y")
-error_letters_audio = ExtResource("4_5nlk5")
 
 [node name="BackGround" type="ColorRect" parent="." unique_id=128143332]
 layout_mode = 1
@@ -24,7 +66,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+color = Color(0.94902, 0.937255, 0.901961, 1)
+
+[node name="BgTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.55)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=241603506]
 layout_mode = 1
@@ -33,40 +87,109 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=152237505]
+[node name="CardPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(920, 0)
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="PromptLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=314979790]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/CardPanel" unique_id=152237505]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
-text = "Qual o seu nome?"
-horizontal_alignment = 1
+theme_override_constants/separation = 10
 
-[node name="NameImput" type="LineEdit" parent="CenterContainer/VBoxContainer" unique_id=643383004]
+[node name="GuideBanner" type="PanelContainer" parent="CenterContainer/CardPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_guide_box")
+
+[node name="GuideRow" type="HBoxContainer" parent="CenterContainer/CardPanel/VBoxContainer/GuideBanner"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="AvatarFrame" type="PanelContainer" parent="CenterContainer/CardPanel/VBoxContainer/GuideBanner/GuideRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_avatar")
+
+[node name="GuidePortrait" type="TextureRect" parent="CenterContainer/CardPanel/VBoxContainer/GuideBanner/GuideRow/AvatarFrame"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(520, 80)
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-placeholder_text = "Escreva Aqui"
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextCol" type="VBoxContainer" parent="CenterContainer/CardPanel/VBoxContainer/GuideBanner/GuideRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="PromptLabel" type="Label" parent="CenterContainer/CardPanel/VBoxContainer/GuideBanner/GuideRow/TextCol" unique_id=314979790]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 30
+text = "Olá! Eu sou o Guia do Pantanal. Qual é o seu nome?"
+autowrap_mode = 3
+
+[node name="SubPromptLabel" type="Label" parent="CenterContainer/CardPanel/VBoxContainer/GuideBanner/GuideRow/TextCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.28, 0.22, 1)
+theme_override_font_sizes/font_size = 21
+text = "Clique nas letras abaixo ou use o teclado:"
+autowrap_mode = 3
+
+[node name="SpeakButton" type="Button" parent="CenterContainer/CardPanel/VBoxContainer/GuideBanner/GuideRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(124, 52)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 21
+text = "Ouvir"
+
+[node name="NameImput" type="LineEdit" parent="CenterContainer/CardPanel/VBoxContainer" unique_id=643383004]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(580, 66)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 34
+placeholder_text = "ESCREVA AQUI"
 alignment = 1
+max_length = 20
 
-[node name="MessageLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=243976062]
+[node name="MessageLabel" type="Label" parent="CenterContainer/CardPanel/VBoxContainer" unique_id=243976062]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6901961, 0, 0.1254902, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
 
-[node name="ConfirmButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1115943261]
-custom_minimum_size = Vector2(360, 80)
+[node name="VirtualKeyboard" type="VBoxContainer" parent="CenterContainer/CardPanel/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Continuar
-"
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
 
-[connection signal="text_submitted" from="CenterContainer/VBoxContainer/NameImput" to="." method="_on_name_imput_text_submitted"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[node name="ButtonRow" type="HBoxContainer" parent="CenterContainer/CardPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="BackMenuButton" type="Button" parent="CenterContainer/CardPanel/VBoxContainer/ButtonRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(290, 68)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Voltar ao Menu"
+
+[node name="ConfirmButton" type="Button" parent="CenterContainer/CardPanel/VBoxContainer/ButtonRow" unique_id=1115943261]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 68)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Continuar"
+
+[connection signal="text_changed" from="CenterContainer/CardPanel/VBoxContainer/NameImput" to="." method="_on_name_imput_text_changed"]
+[connection signal="text_submitted" from="CenterContainer/CardPanel/VBoxContainer/NameImput" to="." method="_on_name_imput_text_submitted"]
+[connection signal="pressed" from="CenterContainer/CardPanel/VBoxContainer/ButtonRow/BackMenuButton" to="." method="_on_back_menu_button_pressed"]
+[connection signal="pressed" from="CenterContainer/CardPanel/VBoxContainer/ButtonRow/ConfirmButton" to="." method="_on_confirm_button_pressed"]

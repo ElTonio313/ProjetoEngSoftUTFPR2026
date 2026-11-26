@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="ProjetoEngSoft"
+config/name="Aventuras no Pantanal"
 run/main_scene="uid://c2prcukasarl4"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -25,6 +25,10 @@ GameData="*uid://b2tt0bpbkftrk"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom="res://assets/theme/pantanal_theme.tres"
 
 [physics]
 

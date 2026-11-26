@@ -6,8 +6,8 @@
 			"text": "Qual ave é símbolo do Pantanal?",
 			"options": ["Tuiuiú", "Pardal"],
 			"correct_index": 0,
-			"hint": "É uma ave enorme, com mais de 1 metro de altura e um colar vermelho no pescoço.",
-			"feedback": "O tuiuiú é uma ave enorme, com mais de 1 metro de altura, e tem um colar vermelho no pescoço. Faz o ninho no alto das árvores, perto da água.",
+			"hint": "É uma ave grande, com mais de 1 metro de altura e um colar vermelho no pescoço.",
+			"feedback": "O tuiuiú é uma ave grande, com mais de 1 metro de altura, e tem um colar vermelho no pescoço. Faz o ninho no alto das árvores, perto da água.",
 			"video_path": "res://assets/videos/tuiuiu.ogv",
 			"image_path": "res://assets/images/tuiuiu.png"
 		},
@@ -28,8 +28,8 @@
 			"text": "O que o tamanduá-bandeira come?",
 			"options": ["Formigas", "Peixes"],
 			"correct_index": 0,
-			"hint": "Ele não tem dentes. Tem uma língua comprida e grudenta para pegar bichos bem pequenos.",
-			"feedback": "Ele não tem dentes e usa a língua comprida e grudenta para pegar formigas e cupins.",
+			"hint": "Ele não tem dentes. Tem uma língua comprida para pegar insetos bem pequenos no chão.",
+			"feedback": "Ele não tem dentes e usa a língua comprida para pegar formigas e cupins.",
 			"video_path": "res://assets/videos/tamandua.ogv",
 			"image_path": "res://assets/images/tamandua.png"
 		},
@@ -51,7 +51,7 @@
 			"options": ["Proteger", "Queimar"],
 			"correct_index": 0,
 			"hint": "Pense no que ajuda os animais e as plantas a continuarem vivos.",
-			"feedback": "Queimadas e desmatamento destroem a casa dos animais e das plantas. Proteger o bioma é o objetivo do ODS 15, Vida na Terra.",
+			"feedback": "Queimadas e desmatamento destroem o habitat dos animais e das plantas. Proteger o bioma é o objetivo do ODS 15, Vida na Terra.",
 			"video_path": "res://assets/videos/proteger.ogv",
 			"image_path": "res://assets/images/proteger.png"
 		}

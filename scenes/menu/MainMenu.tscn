@@ -1,10 +1,55 @@
-[gd_scene format=3 uid="uid://c2prcukasarl4"]
+[gd_scene load_steps=6 format=3 uid="uid://c2prcukasarl4"]
 
 [ext_resource type="Script" uid="uid://c8t5pdfnv0udn" path="res://scenes/menu/main_menu.gd" id="1_m2yvp"]
-[ext_resource type="AudioStream" uid="uid://dj05vr5iq2xob" path="res://assets/audio/narration/menu/titleOfficial.ogg" id="2_iv2fv"]
-[ext_resource type="AudioStream" uid="uid://cgstc5u88lr0g" path="res://assets/audio/narration/menu/Play.ogg" id="2_s3dsm"]
-[ext_resource type="AudioStream" uid="uid://b2irktv4qub2c" path="res://assets/audio/narration/menu/Credits.ogg" id="3_2nud1"]
-[ext_resource type="AudioStream" uid="uid://de7t3ca137kv0" path="res://assets/audio/narration/menu/Quit.ogg" id="4_iv2fv"]
+[ext_resource type="PackedScene" path="res://scenes/ui/AudioControls.tscn" id="2_audio"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
+content_margin_left = 36.0
+content_margin_top = 26.0
+content_margin_right = 36.0
+content_margin_bottom = 26.0
+bg_color = Color(0.980392, 0.972549, 0.94902, 0.97)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_context"]
+content_margin_left = 20.0
+content_margin_top = 14.0
+content_margin_right = 20.0
+content_margin_bottom = 14.0
+bg_color = Color(0.929412, 0.964706, 0.933333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.60, 0.78, 0.62, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_member"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.55, 0.73, 0.57, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="MainMenu" type="Control" unique_id=1905996071]
 layout_mode = 3
@@ -14,10 +59,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m2yvp")
-title_audio = ExtResource("2_iv2fv")
-play_audio = ExtResource("2_s3dsm")
-credits_audio = ExtResource("3_2nud1")
-quit_audio = ExtResource("4_iv2fv")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1333505192]
 layout_mode = 1
@@ -26,51 +67,359 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+color = Color(0.94902, 0.937255, 0.901961, 1)
+
+[node name="BgTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.58)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=972021677]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -180.0
-offset_top = -252.0
-offset_right = 180.0
-offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MenuCard" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MenuCard" unique_id=924187361]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/MenuCard/VBoxContainer" unique_id=1144588800]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 48
+text = "Aventuras no Pantanal"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/MenuCard/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.28, 0.22, 1)
+theme_override_font_sizes/font_size = 24
+text = "Aprender e proteger a vida na Terra (ODS 15)"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CenterContainer/MenuCard/VBoxContainer" unique_id=436725391]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 76)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 34
+text = "Jogar"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/MenuCard/VBoxContainer" unique_id=1654769029]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Configurações"
+
+[node name="CreditsButton" type="Button" parent="CenterContainer/MenuCard/VBoxContainer" unique_id=1697763340]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Créditos"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MenuCard/VBoxContainer" unique_id=1111137203]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Sair"
+
+[node name="TopRightMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -330.0
+offset_top = 18.0
+offset_right = -24.0
+offset_bottom = 78.0
+grow_horizontal = 0
+
+[node name="TeacherReportButton" type="Button" parent="TopRightMargin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(290, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Área do Professor"
+
+[node name="SettingsOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=924187361]
-layout_mode = 2
-theme_override_constants/separation = 24
+[node name="Dim" type="ColorRect" parent="SettingsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1144588800]
+[node name="Center" type="CenterContainer" parent="SettingsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="SettingsOverlay/Center"]
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 64
-text = "Projeto"
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Box" type="VBoxContainer" parent="SettingsOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SettingsTitle" type="Label" parent="SettingsOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 38
+text = "Configurações e Acessibilidade"
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=436725391]
-custom_minimum_size = Vector2(360, 80)
+[node name="SettingsDesc" type="Label" parent="SettingsOverlay/Center/Panel/Box"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Jogar"
+theme_override_font_sizes/font_size = 24
+text = "Ajuste o som, a leitura em voz e o formato das letras:"
+horizontal_alignment = 1
 
-[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1697763340]
-custom_minimum_size = Vector2(360, 80)
+[node name="AudioHolder" type="CenterContainer" parent="SettingsOverlay/Center/Panel/Box"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Créditos"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1111137203]
-custom_minimum_size = Vector2(360, 80)
+[node name="AudioControls" parent="SettingsOverlay/Center/Panel/Box/AudioHolder" instance=ExtResource("2_audio")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Sair"
 
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_mouse_entered"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="NarrationButton" type="Button" parent="SettingsOverlay/Center/Panel/Box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(540, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 26
+text = "Narração por Voz: Ligado"
+
+[node name="UppercaseButton" type="Button" parent="SettingsOverlay/Center/Panel/Box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(540, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 26
+text = "Letras em Caixa Alta: Ligado"
+
+[node name="CloseSettingsButton" type="Button" parent="SettingsOverlay/Center/Panel/Box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Fechar"
+
+[node name="CreditsOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="CreditsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Center" type="CenterContainer" parent="CreditsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="CreditsOverlay/Center"]
+custom_minimum_size = Vector2(980, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+
+[node name="Box" type="VBoxContainer" parent="CreditsOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="CreditsTitle" type="Label" parent="CreditsOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 36
+text = "Sobre o Projeto e Créditos"
+horizontal_alignment = 1
+
+[node name="ContextPanel" type="PanelContainer" parent="CreditsOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_context")
+
+[node name="ContextText" type="Label" parent="CreditsOverlay/Center/Panel/Box/ContextPanel"]
+custom_minimum_size = Vector2(860, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 21
+text = "Jogo sério educativo desenvolvido na disciplina de Engenharia de Software I da UTFPR (Campus Ponta Grossa, 2026), inspirado no estudo de caso da ASSARTE e alinhado ao ODS 15 (Vida na Terra) para apoiar o aprendizado acessível sobre a fauna, a flora e a conservação do Pantanal."
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="TeamHeading" type="Label" parent="CreditsOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 24
+text = "Equipe de Desenvolvimento"
+horizontal_alignment = 1
+
+[node name="TeamGrid" type="GridContainer" parent="CreditsOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Member1" type="PanelContainer" parent="CreditsOverlay/Center/Panel/Box/TeamGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_member")
+
+[node name="VBox" type="VBoxContainer" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member1"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Name" type="Label" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member1/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 22
+text = "Antony Rinaldi Sikorski"
+
+[node name="Role" type="Label" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member1/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.32, 0.26, 1)
+theme_override_font_sizes/font_size = 18
+text = "Fluxo de telas, navegação e lógica da Fase 2"
+autowrap_mode = 3
+
+[node name="Member2" type="PanelContainer" parent="CreditsOverlay/Center/Panel/Box/TeamGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_member")
+
+[node name="VBox" type="VBoxContainer" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Name" type="Label" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member2/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 22
+text = "Gabriel Luiz Lidani"
+
+[node name="Role" type="Label" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member2/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.32, 0.26, 1)
+theme_override_font_sizes/font_size = 18
+text = "Lógica da Fase 1 (Quiz), introdução e controles de áudio"
+autowrap_mode = 3
+
+[node name="Member3" type="PanelContainer" parent="CreditsOverlay/Center/Panel/Box/TeamGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_member")
+
+[node name="VBox" type="VBoxContainer" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member3"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Name" type="Label" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member3/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 22
+text = "Juan Estevan Brandão Eleuterio"
+
+[node name="Role" type="Label" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member3/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.32, 0.26, 1)
+theme_override_font_sizes/font_size = 18
+text = "Front-end, identidade visual, acessibilidade e assets"
+autowrap_mode = 3
+
+[node name="Member4" type="PanelContainer" parent="CreditsOverlay/Center/Panel/Box/TeamGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_member")
+
+[node name="VBox" type="VBoxContainer" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member4"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Name" type="Label" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member4/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 20
+text = "Renan H. dos Santos Bosca e Matheus de Lima Santos"
+autowrap_mode = 3
+
+[node name="Role" type="Label" parent="CreditsOverlay/Center/Panel/Box/TeamGrid/Member4/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.32, 0.26, 1)
+theme_override_font_sizes/font_size = 18
+text = "Levantamento de requisitos, escopo e documentação"
+autowrap_mode = 3
+
+[node name="AdvisorLabel" type="Label" parent="CreditsOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.30, 0.24, 1)
+theme_override_font_sizes/font_size = 20
+text = "Orientação: Profa. Eliana C. M. Ishikawa  •  UTFPR Ponta Grossa"
+horizontal_alignment = 1
+
+[node name="CloseCreditsButton" type="Button" parent="CreditsOverlay/Center/Panel/Box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Fechar"
+
+[connection signal="pressed" from="TopRightMargin/TeacherReportButton" to="." method="_on_teacher_report_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuCard/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuCard/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuCard/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MenuCard/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="SettingsOverlay/Center/Panel/Box/UppercaseButton" to="." method="_on_uppercase_button_pressed"]
+[connection signal="pressed" from="SettingsOverlay/Center/Panel/Box/CloseSettingsButton" to="." method="_on_close_settings_pressed"]
+[connection signal="pressed" from="CreditsOverlay/Center/Panel/Box/CloseCreditsButton" to="." method="_on_close_credits_pressed"]

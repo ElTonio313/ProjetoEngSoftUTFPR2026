@@ -84,7 +84,12 @@ func say_file(path: String) -> bool:
 
 ## Carrega um áudio pelo caminho. Devolve null (com aviso) se o arquivo não existir.
 static func load_audio(path: String) -> AudioStream:
-	if not ResourceLoader.exists(path):
-		push_warning("Narrator: áudio não encontrado: %s" % path)
-		return null
-	return load(path) as AudioStream
+	if ResourceLoader.exists(path):
+		var stream := load(path) as AudioStream
+		if stream != null:
+			return stream
+	var abs_path := ProjectSettings.globalize_path(path)
+	if path.ends_with(".ogg") and FileAccess.file_exists(abs_path):
+		return AudioStreamOggVorbis.load_from_file(abs_path)
+	push_warning("Narrator: áudio não encontrado: %s" % path)
+	return null
