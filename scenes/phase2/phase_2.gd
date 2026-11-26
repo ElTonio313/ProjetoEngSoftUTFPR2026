@@ -113,7 +113,8 @@ func _on_answer_checked(is_correct: bool, hint: String) -> void:
 func _on_phase_finished(result: Dictionary) -> void:
 	GameData.set_phase2_result(result)   # 1) guarda o resultado da Fase 2
 	GameState.finish_activity()          # 2) encerra o relógio total
-	GameState.go_to_final_report()       # 3) vai para o relatório
+	ReportWriter.save_report()           # 3) salva o relatório em arquivo
+	GameState.go_to_final_report()       # 4) vai para o relatório
 
 # a barra e o texto sempre refletem o que a lógica já contou.
 func _update_progress() -> void:
