@@ -1,17 +1,17 @@
-# Jogo Educativo: Fauna do Pantanal
+# Aventuras no Pantanal
 
 ## Sinopse
 
-Jogo educativo em 2D, desenvolvido na Godot Engine, que apresenta a fauna do Pantanal brasileiro a pessoas com deficiência intelectual. A proposta é ensinar de forma **simples, acessível e interativa**: instruções curtas, uma tarefa por vez, interações fáceis e feedbacks explícitos, que usam texto e símbolos além da cor.
+Jogo educativo sério em 2D, desenvolvido na Godot Engine, que apresenta a fauna, a flora e a conservação do Pantanal brasileiro (ODS 15 – Vida na Terra) a jovens e adultos com deficiência intelectual. A proposta segue os critérios de acessibilidade e jogos sérios do estudo de caso da **ASSARTE (Associação Artesanal do Excepcional de Ponta Grossa)**.
 
 O jogador passa por duas fases e pode errar quantas vezes precisar, porque só avança ao acertar:
 
-1. **Fase 1: Quiz.** Perguntas curtas sobre fauna, flora e conservação do Pantanal.
-2. **Fase 2: Classificação.** O aluno arrasta cada animal até o seu grupo: mamíferos, répteis ou aves.
+1. **Fase 1: Quiz.** Introdução ilustrada sobre fauna, flora e conservação do Pantanal seguida de 5 perguntas com apoio de dicas, narração em voz, explicações e premiação com medalha, estrelas e figurinhas desbloqueadas.
+2. **Fase 2: Classificação.** O aluno classifica 6 animais do Pantanal em seu grupo biológico (**Mamíferos**, **Répteis** ou **Aves**), podendo arrastar o cartão, clicar diretamente ou usar o teclado.
 
-Projeto acadêmico da disciplina de Engenharia de Software, inspirado no estudo de caso da ASSARTE (Ponta Grossa).
-
-> O nome definitivo do jogo ainda não foi escolhido. "Jogo Educativo" é provisório.
+Ao final, o sistema disponibiliza **duas visões de relatório**:
+- **Visão do Aluno:** Tela acolhedora e gamificada com estrelas, medalhas desbloqueadas (*Explorador do Pantanal*, *Amigo da Fauna* e *Selo Guardião ODS 15*), miniaturas das espécies e leitura em voz do resumo.
+- **Visão do Professor (Histórico + Exportação em PDF):** Relatório pedagógico detalhado com todas as partidas salvas em disco (nome, data/hora, tempo total, estrelas, acertos de primeira, erros, dicas usadas, tempo por animal e **avaliação de coordenação motora fina nos periféricos: arraste vs. clique vs. teclado**), com opção de salvar em **PDF** no local escolhido pelo professor.
 
 ---
 
@@ -19,10 +19,10 @@ Projeto acadêmico da disciplina de Engenharia de Software, inspirado no estudo 
 
 | Integrante | Responsabilidade |
 |---|---|
-| **Antony** | Lógica da tela de início, tela de nome, Fase 2 e ligações entre as telas |
-| **Gabriel** | Lógica da Fase 1 (quiz) |
-| **Juan** | Front-end: aparência, assets, cores e identidade visual |
-| **Rena e Matheus** | Documentação |
+| **Antony Rinaldi Sikorski** | Fluxo entre telas, tela de nome, Fase 2, narrações gravadas (`Narrator` / `.ogg`) e gravação de relatório `.txt` |
+| **Gabriel Luiz Lidani** | Lógica da Fase 1 (quiz), introdução e controles de áudio |
+| **Juan Estevan Brandão Eleuterio** | Front-end: identidade visual, ilustrações, acessibilidade, Guia Visual, gamificação e relatórios (incluindo exportação em PDF) |
+| **Renan Henrique dos Santos Bosca e Matheus de Lima Santos** | Levantamento de requisitos, escopo e documentação |
 
 ---
 
@@ -30,10 +30,10 @@ Projeto acadêmico da disciplina de Engenharia de Software, inspirado no estudo 
 
 | Item | Requisito |
 |---|---|
-| Sistema operacional | Windows 10 |
+| Sistema operacional | Windows 10 / 11 |
 | Engine | Godot **4.7.2** (versão Standard, com GDScript, não a .NET) |
 | Renderizador | Compatibility (leve, adequado a computadores modestos) |
-| Entrada | Mouse (teclado nos botões) |
+| Entrada | Mouse (com Teclado Virtual na tela) e/ou Teclado |
 | Resolução de referência | 1280 × 720, com escala automática da interface |
 | Controle de versão | Git e GitHub |
 
@@ -41,118 +41,91 @@ Projeto acadêmico da disciplina de Engenharia de Software, inspirado no estudo 
 
 1. Clone o repositório.
 2. Abra a Godot 4.7.2 e, no Gerenciador de Projetos, escolha **Importar** e selecione o arquivo `project.godot`.
-3. Aguarde a primeira importação terminar. Na primeira abertura a Godot reconstrói o cache de classes.
-4. Pressione **F5** para executar o jogo pelo menu principal.
-
-Para rodar uma cena isolada, abra-a no editor e pressione **F6**.
+3. Aguarde a primeira importação terminar.
+4. Pressione **F5** para executar o jogo pelo menu principal (ou **F6** para testar uma cena isolada).
 
 ---
 
 ## 3. Estrutura do projeto
 
 ```
+├── assets/
+│   ├── audio/                 Narrações em voz neural (.ogg) para todas as telas, dicas e relatórios
+│   ├── images/                Ilustrações 2D do Pantanal, animais, plantas, Guia Visual e fundo
+│   ├── sounds/                Efeitos sonoros acessíveis de acerto e erro
+│   └── theme/                 Tema global (pantanal_theme.tres com fonte Arial)
 ├── autoload/                  Scripts globais, ativos durante todo o jogo
-│   ├── game_state.gd          Nome do aluno e navegação entre as cenas
-│   └── game_data.gd           Resultados das fases (salvos em arquivo)
+│   ├── game_state.gd          Nome do aluno, Caixa Alta, narração, gamificação, relógio e navegação
+│   └── game_data.gd           Resultados das fases e histórico do professor (salvos em JSON)
 ├── data/
+│   ├── intro.json             Páginas educativas da introdução
 │   ├── questions.json         Perguntas da Fase 1
-│   └── animals.json           Animais da Fase 2 (nome, categoria, dica)
+│   └── animals.json           Animais da Fase 2 (nome, categoria, dica e imagem)
+├── docs/
+│   └── fase1_back_end.md      Documentação técnica do contrato da Fase 1
 ├── scenes/
-│   ├── menu/                  Menu principal
-│   ├── player_name/           Tela de identificação do aluno
-│   ├── quiz/                  Tela da Fase 1
-│   ├── phase2/                Tela da Fase 2 (introdução, atividade e conclusão)
-│   └── phase1/                Cena provisória da Fase 1 (sem uso, a remover)
+│   ├── menu/                  Menu principal (Jogar, Área do Professor, Configurações, Créditos, Sair)
+│   ├── player_name/           Identificação do aluno com Teclado Virtual integrado
+│   ├── intro/                 Introdução educativa ilustrada da Fase 1
+│   ├── quiz/                  Tela da Fase 1 (Quiz com Guia Visual e premiação por estrelas)
+│   ├── phase2/                Tela da Fase 2 (Introdução dos grupos e Classificação)
+│   ├── final_reports/         Tela com os 2 Relatórios (Visão do Aluno e Visão do Professor)
+│   └── ui/                    Controles reutilizáveis de som (AudioControls)
 ├── scripts/
-│   ├── quiz/                  Lógica da Fase 1 (QuizManager, Question)
-│   └── classification/        Lógica da Fase 2 (ClassificationManager, Animal)
-└── tests/                     Cenas de teste automático da lógica das duas fases
+│   ├── audio/                 Reprodutor sequencial de narração com prioridades (Narrator)
+│   ├── quiz/                  Lógica e caminhos de áudio da Fase 1 (QuizManager, Question, QuizAudio)
+│   ├── classification/        Lógica da Fase 2 (ClassificationManager, Animal)
+│   ├── report/                Gravação automática de relatório individual em .txt (ReportWriter)
+│   └── reports/               Exportador nativo do Relatório do Professor em PDF (PdfExporter)
+└── tests/                     Cenas e scripts de teste automático (Quiz, Fase 2, GameState e Narrator)
 ```
 
 ### Fluxo do jogo
 
 ```
-Menu principal → Identificação do aluno → Fase 1 (quiz) → Fase 2 (classificação)
+Menu principal → Identificação do aluno (Teclado Virtual) → Introdução → Fase 1 (Quiz) → Fase 2 (Classificação) → Relatórios (Aluno e Professor)
 ```
-
-### Como as peças se conectam
-
-- **Autoloads.** O `GameState` guarda o nome do aluno e sabe o caminho de cada cena, e cada tela só pede a navegação (por exemplo, `GameState.go_to_phase2()`). O `GameData` guarda os resultados das fases. Como eles não são destruídos na troca de cena, os dados chegam a qualquer tela.
-- **Lógica separada da interface.** Nas duas fases, a lógica (`QuizManager`, `ClassificationManager`) não conhece botões nem telas. A interface chama as funções públicas e reage a **sinais** (`answer_checked`, `exercise_ready`, `phase_finished`). Assim, a aparência pode mudar sem mexer nas regras, e as regras podem ser testadas sem abrir a tela.
-- **Dados fora do código.** Perguntas e animais ficam em arquivos JSON, e trocá-los não exige alterar scripts.
 
 ---
 
 ## 4. Validações e regras principais
 
 ### 4.1. Identificação do aluno
-
-| Regra | Comportamento |
-|---|---|
-| Nome vazio | Mensagem curta pedindo o nome. Não avança |
-| Nome só com espaços | Tratado como vazio |
-| Mais de **20** caracteres | Mensagem "Use no máximo 20 letras." Não avança (limite preliminar) |
-| Espaços nas pontas | Removidos antes de gravar |
-| Nome válido | Gravado no `GameState` e usado nas telas seguintes |
+- Suporte a digitação pelo **Teclado Virtual na tela** (clique com o mouse) ou pelo teclado físico.
+- Valida nome vazio, apenas espaços e limite máximo de 20 caracteres, exibindo aviso claro com símbolo (`⚠`).
 
 ### 4.2. Fase 1: Quiz
-
-- 5 perguntas de 2 alternativas (fauna, flora e conservação), carregadas de `data/questions.json`.
+- 5 perguntas de 2 alternativas (fauna, flora e conservação), carregadas de `data/questions.json`, acompanhadas de ilustração educativa.
 - A ordem das alternativas é embaralhada a cada partida.
-- Depois de responder, as alternativas são travadas e aparecem o acerto ou erro (texto, cor e destaque nos botões) e uma explicação.
-- Cada pergunta só pode ser respondida uma vez.
-- O resultado (acertos, erros, porcentagem, tempo e acertos por categoria) é salvo no `GameData`.
-- Ao final, o botão **Continuar** leva à Fase 2.
+- O aluno só avança ao escolher a alternativa correta. Se errar, a alternativa errada é travada com símbolo `✗`, aparece `"ERRADO. TENTE DE NOVO."` com uma **dica**, e a pergunta continua aberta.
+- O botão **Dica** mostra a dica da pergunta a qualquer momento.
+- Ao acertar, aparecem o símbolo `✓`, a explicação e o botão **Próxima**.
+- Cada pergunta conta uma vez: acerto = acertou de primeira; erro = errou antes de acertar. Também se guarda em quantas perguntas a dica foi usada.
+- O botão **Sobre** explica a fase. Os controles de som (mudo e volume) ficam em `scenes/ui/AudioControls.tscn`.
 
 ### 4.3. Fase 2: Classificação
+- Painel explicativo inicial apresentando os 3 grupos (**Mamíferos**, **Répteis** e **Aves**), que também pode ser reaberto a qualquer momento pelo botão **Ver Grupos**.
+- 6 animais (2 mamíferos, 2 répteis e 2 aves), em ordem fixa, um por vez, com ilustração e nome.
+- **Acessibilidade motora:** O aluno pode tanto **arrastar o cartão do animal** até o grupo quanto **clicar diretamente** (ou usar `Tab` + `Enter`) sobre o grupo desejado.
+- Botão **Dica** disponível a qualquer momento para lembrar as características do animal atual.
+- Medição individual de tempo e contagem de tentativas incorretas por animal.
 
-**Estrutura**
-- Introdução educativa em texto, com botão **Continuar**.
-- 6 animais (2 mamíferos, 2 répteis e 2 aves), em **ordem fixa**, um por vez.
-- Barra de progresso e texto "X de 6 animais".
-
-**Interação**
-- O aluno arrasta o animal até uma das três áreas. Soltar fora de qualquer área não faz nada, e um clique sem arrastar é ignorado.
-- O avanço para o próximo animal é feito pelo botão **Próximo animal** (no último, **Concluir**).
-
-**Feedback**
-- **Acerto:** mensagem de confirmação com símbolo, texto e cor. O animal deixa de poder ser arrastado.
-- **Erro:** mensagem com símbolo e texto e uma **dica** educativa. O aluno tenta de novo quantas vezes precisar.
-
-**Contagem e tempo**
-- **Erros:** toda tentativa incorreta é contada uma vez, mesmo que o aluno acerte depois. Guarda-se o total e o número por animal.
-- **Progresso:** só avança no acerto, e cada animal conta uma única vez, mesmo com várias tentativas ou com soltas repetidas.
-- **Tempo de cada exercício:** começa quando o animal aparece e termina **no instante do acerto**. Os erros não reiniciam o relógio. O tempo de leitura da introdução e o intervalo até clicar em "Próximo animal" não entram na conta.
-- O cronômetro **não é mostrado** ao aluno, para não gerar pressão.
-
-**Dados dos animais**
-- `data/animals.json` é validado ao carregar: id, nome, categoria e dica são obrigatórios, e a categoria deve ser `mamifero`, `reptil` ou `ave`. Um item inválido é ignorado e o erro é registrado.
-
-**Conclusão**
-- Ao classificar os 6 animais, aparece uma tela de parabéns, e o resultado (total de erros e, por animal, tempo e erros) é salvo no `GameData`.
-
-### 4.4. Acessibilidade
-
-- O feedback não depende só de cor: usa também texto e símbolo.
-- Texto escuro sobre fundo claro, com fonte grande (28 px ou mais).
-- Botões altos (80 px) e áreas de classificação largas.
-- Uma tarefa por vez, sem limite de tempo visível e sem elementos distrativos.
-- Botões principais com foco de teclado (Enter ou Espaço).
+### 4.4. Critérios de Acessibilidade e Jogos Sérios Aplicados
+- **Narração em voz natural (`.ogg`) e Guia Visual (Guarda-Parque do Pantanal):** Leitura acolhedora em português em todas as telas, botão **Ouvir**, leitura ao passar o mouse sobre opções/botões e opção de ligar/desligar em Configurações.
+- **Fonte Arial e Letras em CAIXA ALTA** por padrão em todas as telas (com opção de alternância em Configurações).
+- **Teclado Virtual na tela** para evitar dependência do teclado físico ou combinação de teclas.
+- **Dupla modalidade motora na Fase 2** (arrastar, clicar ou teclado) para atender alunos com dificuldade de coordenação motora fina, registrando o periférico utilizado para acompanhamento pedagógico do professor.
+- **Feedback multimodal e gamificação:** Símbolos (`✓`, `✗`, `⚠`), texto, som suave, estrelas douradas, medalhas e figurinhas desbloqueadas.
+- **Cores confortáveis e sem excesso de luminosidade:** Fundo fosco em tom areia/creme com paisagem suavizada, cartões claros de alto contraste e linguagem adequada a jovens e adultos (> 16 anos), sem infantilização.
+- **Animações suaves** nos botões e cartões para guiar a atenção sem poluição visual.
 
 ### 4.5. Testes automáticos
 
 | Cena | Verifica |
 |---|---|
-| `tests/quiz_test.tscn` | Carregamento das perguntas, contagem de acertos e erros, resposta repetida ignorada e gravação do resultado |
-| `tests/classification_test.tscn` | Composição dos 6 animais, ordem fixa, validação, contagem de erros, progresso uma vez por animal, medição de tempo e reinício |
+| `tests/quiz_test.tscn` | Carregamento das perguntas, contagem de acertos/erros/dicas, tentativa após erro e gravação no `GameData` |
+| `tests/classification_test.tscn` | Composição dos 6 animais, ordem fixa, validação, contagem de erros, progresso e medição de tempo |
+| `tests/game_state_test.tscn` | Medição do tempo total da atividade e reinício de sessão no `GameState` |
+| `tests/narrator_test.tscn` | Fila, prioridade e interrupção limpa de áudios no `Narrator` |
 
-Para executar, abra a cena, pressione **F6** e leia a aba **Saída**. O resultado esperado é `TUDO CERTO`.
-
-### 4.6. Ainda em aberto
-
-- Tela final de feedback e relatórios (quantidade, conteúdo e momento ainda em discussão).
-- Tempo total da atividade (início da Fase 1 até o fim da Fase 2).
-- Funcionamento dos botões **Configurações** (som), **Créditos** e **Sair**. Hoje só o **Jogar** está ativo.
-- Lista definitiva de animais, textos e dicas (os atuais são provisórios e precisam de revisão).
-- Imagens, vídeos e sons, que dependem do front-end.
-- Papel do `GameData` em relação ao `GameState` e a gravação de resultados em disco, incluindo quando limpá-los entre alunos.
+Para executar, abra a cena na Godot, pressione **F6** e leia a aba **Saída** (`TUDO CERTO`).

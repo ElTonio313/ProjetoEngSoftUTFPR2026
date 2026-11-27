@@ -1,30 +1,149 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://scenes/quiz/quiz_screen.gd" id="1_quiz"]
 [ext_resource type="PackedScene" path="res://scenes/ui/AudioControls.tscn" id="2_audio"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
-bg_color = Color(0.1, 0.5, 0.2, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-content_margin_left = 40.0
-content_margin_top = 32.0
-content_margin_right = 40.0
-content_margin_bottom = 32.0
-bg_color = Color(0.98, 0.98, 0.98, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.980392, 0.972549, 0.94902, 0.96)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.35, 0.35, 0.35, 1)
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
+bg_color = Color(0.180392, 0.545098, 0.219608, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+content_margin_left = 28.0
+content_margin_top = 14.0
+content_margin_right = 28.0
+content_margin_bottom = 14.0
+bg_color = Color(0.980392, 0.972549, 0.94902, 0.97)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_guide_box"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(0.92549, 0.964706, 0.929412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.45, 0.70, 0.48, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avatar"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_media"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.933333, 0.964706, 0.937255, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.28, 0.56, 0.31, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 36.0
+content_margin_top = 24.0
+content_margin_right = 36.0
+content_margin_bottom = 24.0
+bg_color = Color(0.980392, 0.972549, 0.94902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_step"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.941176, 0.972549, 0.945098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.60, 0.78, 0.62, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
+bg_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ods"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0.972549, 0.882353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.84, 0.65, 0.22, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="QuizScreen" type="Control"]
 layout_mode = 3
@@ -42,127 +161,226 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+color = Color(0.94902, 0.937255, 0.901961, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="BgTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.58)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 80.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(0, 600)
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 14
+
+[node name="OuterColumn" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 10
 
-[node name="ProgressLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="HeaderBar" type="HBoxContainer" parent="MarginContainer/OuterColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ProgressPill" type="PanelContainer" parent="MarginContainer/OuterColumn/HeaderBar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill")
+
+[node name="ProgressBox" type="HBoxContainer" parent="MarginContainer/OuterColumn/HeaderBar/ProgressPill"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ProgressLabel" type="Label" parent="MarginContainer/OuterColumn/HeaderBar/ProgressPill/ProgressBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 22
 text = "Pergunta 1 de 5"
-horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/OuterColumn/HeaderBar/ProgressPill/ProgressBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(520, 24)
+custom_minimum_size = Vector2(165, 20)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
 max_value = 5.0
 show_percentage = false
 
-[node name="QuestionLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(900, 0)
+[node name="Spacer" type="Control" parent="MarginContainer/OuterColumn/HeaderBar"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 48
+size_flags_horizontal = 3
+
+[node name="MenuButton" type="Button" parent="MarginContainer/OuterColumn/HeaderBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 52)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 21
+text = "Menu"
+
+[node name="AboutButton" type="Button" parent="MarginContainer/OuterColumn/HeaderBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 52)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 21
+text = "Sobre"
+
+[node name="AudioControls" parent="MarginContainer/OuterColumn/HeaderBar" instance=ExtResource("2_audio")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="QuizCard" type="PanelContainer" parent="MarginContainer/OuterColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/OuterColumn/QuizCard"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="MediaBox" type="CenterContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MediaFrame" type="PanelContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/MediaBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_media")
+
+[node name="QuestionVideo" type="VideoStreamPlayer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/MediaBox/MediaFrame"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(272, 153)
+layout_mode = 2
+expand = true
+
+[node name="QuestionImage" type="TextureRect" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/MediaBox/MediaFrame"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(272, 153)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QuestionLabel" type="Label" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(920, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0941176, 0.14902, 0.105882, 1)
+theme_override_font_sizes/font_size = 33
 text = "Pergunta"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="OptionsGrid" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+[node name="OptionsGrid" type="GridContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 24
-theme_override_constants/v_separation = 24
+theme_override_constants/v_separation = 12
 columns = 2
 
-[node name="ResultLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="RewardBox" type="VBoxContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(900, 0)
+visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 36
-horizontal_alignment = 1
+theme_override_constants/separation = 10
+
+[node name="GuideBox" type="PanelContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_guide_box")
+
+[node name="GuideRow" type="HBoxContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/GuideBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="AvatarFrame" type="PanelContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/GuideBox/GuideRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_avatar")
+
+[node name="GuidePortrait" type="TextureRect" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/GuideBox/GuideRow/AvatarFrame"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="GuideTextCol" type="VBoxContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/GuideBox/GuideRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="ResultLabel" type="Label" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/GuideBox/GuideRow/GuideTextCol"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 24
+text = "Guia do Pantanal"
 autowrap_mode = 3
 
-[node name="FeedbackLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="FeedbackLabel" type="Label" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/GuideBox/GuideRow/GuideTextCol"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.0941176, 0.14902, 0.105882, 1)
+theme_override_font_sizes/font_size = 20
+text = "Observe a imagem e escolha a resposta certa!"
 autowrap_mode = 3
 
-[node name="ActionRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+[node name="SpeakButton" type="Button" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/GuideBox/GuideRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(124, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 21
+text = "Ouvir"
+
+[node name="ActionRow" type="HBoxContainer" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 24
+theme_override_constants/separation = 22
 
-[node name="HintButton" type="Button" parent="CenterContainer/VBoxContainer/ActionRow"]
+[node name="HintButton" type="Button" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/ActionRow"]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(360, 80)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Dica"
-
-[node name="NextButton" type="Button" parent="CenterContainer/VBoxContainer/ActionRow"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(360, 80)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Próxima"
-
-[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer/ActionRow"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(360, 80)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Jogar de novo"
-
-[node name="TopBar" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -700.0
-offset_top = 12.0
-offset_right = -16.0
-offset_bottom = 76.0
-grow_horizontal = 0
-theme_override_constants/separation = 16
-alignment = 2
-
-[node name="AboutButton" type="Button" parent="TopBar"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 64)
+custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "Sobre"
+text = "Dica"
 
-[node name="AudioControls" parent="TopBar" instance=ExtResource("2_audio")]
+[node name="NextButton" type="Button" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/ActionRow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Próxima"
+
+[node name="RestartButton" type="Button" parent="MarginContainer/OuterColumn/QuizCard/VBoxContainer/ActionRow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Jogar de novo"
 
 [node name="AboutOverlay" type="Control" parent="."]
 unique_name_in_owner = true
@@ -192,37 +410,173 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="PanelContainer" parent="AboutOverlay/Center"]
+custom_minimum_size = Vector2(920, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="Box" type="VBoxContainer" parent="AboutOverlay/Center/Panel"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 14
 
 [node name="AboutTitle" type="Label" parent="AboutOverlay/Center/Panel/Box"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 44
-text = "Sobre a Fase 1"
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 36
+text = "Como funciona a Fase 1 (Quiz)"
 horizontal_alignment = 1
 
-[node name="AboutText" type="Label" parent="AboutOverlay/Center/Panel/Box"]
-custom_minimum_size = Vector2(980, 0)
+[node name="AboutIntro" type="Label" parent="AboutOverlay/Center/Panel/Box"]
+custom_minimum_size = Vector2(840, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_constants/line_spacing = 6
-theme_override_font_sizes/font_size = 28
-text = "Nesta fase você responde perguntas sobre os bichos e as plantas do Pantanal.
-Escolha uma resposta. Se errar, aparece uma dica e você tenta de novo.
-Se precisar de ajuda, clique em Dica.
-Depois de acertar, você lê uma explicação e vai para a próxima pergunta.
-Esta fase faz parte do ODS 15, Vida na Terra: cuidar do Pantanal é cuidar da vida dos animais e das plantas."
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 22
+text = "Nesta etapa você responde a 5 perguntas sobre os animais, as plantas e a conservação do Pantanal brasileiro."
+horizontal_alignment = 3
 autowrap_mode = 3
 
-[node name="CloseAboutButton" type="Button" parent="AboutOverlay/Center/Panel/Box"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 72)
+[node name="Step1" type="PanelContainer" parent="AboutOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_step")
+
+[node name="Row" type="HBoxContainer" parent="AboutOverlay/Center/Panel/Box/Step1"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Badge" type="PanelContainer" parent="AboutOverlay/Center/Panel/Box/Step1/Row"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="Num" type="Label" parent="AboutOverlay/Center/Panel/Box/Step1/Row/Badge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+
+[node name="TextCol" type="VBoxContainer" parent="AboutOverlay/Center/Panel/Box/Step1/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="StepTitle" type="Label" parent="AboutOverlay/Center/Panel/Box/Step1/Row/TextCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 22
+text = "Observe e escolha"
+
+[node name="StepDesc" type="Label" parent="AboutOverlay/Center/Panel/Box/Step1/Row/TextCol"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Leia a pergunta, veja a imagem e clique em uma das duas opções."
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="Step2" type="PanelContainer" parent="AboutOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_step")
+
+[node name="Row" type="HBoxContainer" parent="AboutOverlay/Center/Panel/Box/Step2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Badge" type="PanelContainer" parent="AboutOverlay/Center/Panel/Box/Step2/Row"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="Num" type="Label" parent="AboutOverlay/Center/Panel/Box/Step2/Row/Badge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "2"
+horizontal_alignment = 1
+
+[node name="TextCol" type="VBoxContainer" parent="AboutOverlay/Center/Panel/Box/Step2/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="StepTitle" type="Label" parent="AboutOverlay/Center/Panel/Box/Step2/Row/TextCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 22
+text = "Precisa de ajuda?"
+
+[node name="StepDesc" type="Label" parent="AboutOverlay/Center/Panel/Box/Step2/Row/TextCol"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Use o botão Dica quando quiser. Se errar, aparece uma dica e você tenta de novo!"
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="Step3" type="PanelContainer" parent="AboutOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_step")
+
+[node name="Row" type="HBoxContainer" parent="AboutOverlay/Center/Panel/Box/Step3"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Badge" type="PanelContainer" parent="AboutOverlay/Center/Panel/Box/Step3/Row"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="Num" type="Label" parent="AboutOverlay/Center/Panel/Box/Step3/Row/Badge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "3"
+horizontal_alignment = 1
+
+[node name="TextCol" type="VBoxContainer" parent="AboutOverlay/Center/Panel/Box/Step3/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="StepTitle" type="Label" parent="AboutOverlay/Center/Panel/Box/Step3/Row/TextCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 22
+text = "Aprenda e avance"
+
+[node name="StepDesc" type="Label" parent="AboutOverlay/Center/Panel/Box/Step3/Row/TextCol"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Ao acertar, leia a explicação sobre a espécie e clique em Próxima."
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="OdsBanner" type="PanelContainer" parent="AboutOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ods")
+
+[node name="OdsText" type="Label" parent="AboutOverlay/Center/Panel/Box/OdsBanner"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.28, 0.04, 1)
+theme_override_font_sizes/font_size = 20
+text = "ODS 15 — Vida na Terra: cuidar do Pantanal é proteger a vida."
+horizontal_alignment = 1
+
+[node name="AboutBtnRow" type="HBoxContainer" parent="AboutOverlay/Center/Panel/Box"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 36
+theme_override_constants/separation = 20
+
+[node name="AboutSpeakButton" type="Button" parent="AboutOverlay/Center/Panel/Box/AboutBtnRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 66)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Ouvir"
+
+[node name="CloseAboutButton" type="Button" parent="AboutOverlay/Center/Panel/Box/AboutBtnRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 66)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Fechar"

@@ -1,6 +1,87 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scenes/intro/intro_screen.gd" id="1_intro"]
+[ext_resource type="PackedScene" path="res://scenes/ui/AudioControls.tscn" id="2_audio"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pill"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.980392, 0.972549, 0.94902, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+content_margin_left = 32.0
+content_margin_top = 14.0
+content_margin_right = 32.0
+content_margin_bottom = 14.0
+bg_color = Color(0.980392, 0.972549, 0.94902, 0.97)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_guide_hdr"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(0.92549, 0.964706, 0.929412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.45, 0.70, 0.48, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avatar"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_media"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.933333, 0.964706, 0.937255, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.28, 0.56, 0.31, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="IntroScreen" type="Control"]
 layout_mode = 3
@@ -18,7 +99,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+color = Color(0.94902, 0.937255, 0.901961, 1)
+
+[node name="BgTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.58)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -27,88 +120,167 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 12
 
 [node name="Column" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderRow" type="HBoxContainer" parent="Margin/Column"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitlePill" type="PanelContainer" parent="Margin/Column/HeaderRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_pill")
+
+[node name="PillRow" type="HBoxContainer" parent="Margin/Column/HeaderRow/TitlePill"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="TitleLabel" type="Label" parent="Margin/Column/HeaderRow/TitlePill/PillRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 28
+text = "Antes de começar"
+
+[node name="PageLabel" type="Label" parent="Margin/Column/HeaderRow/TitlePill/PillRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.28, 0.22, 1)
+theme_override_font_sizes/font_size = 24
+text = "Página 1 de 3"
+
+[node name="Spacer" type="Control" parent="Margin/Column/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuButton" type="Button" parent="Margin/Column/HeaderRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(104, 52)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 21
+text = "Menu"
+
+[node name="AudioControls" parent="Margin/Column/HeaderRow" instance=ExtResource("2_audio")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="StoryCard" type="PanelContainer" parent="Margin/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="CardColumn" type="VBoxContainer" parent="Margin/Column/StoryCard"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="GuideHeader" type="PanelContainer" parent="Margin/Column/StoryCard/CardColumn"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_guide_hdr")
+
+[node name="GuideRow" type="HBoxContainer" parent="Margin/Column/StoryCard/CardColumn/GuideHeader"]
+layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="TitleLabel" type="Label" parent="Margin/Column"]
-unique_name_in_owner = true
+[node name="AvatarFrame" type="PanelContainer" parent="Margin/Column/StoryCard/CardColumn/GuideHeader/GuideRow"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 44
-text = "Antes de começar"
-horizontal_alignment = 1
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_avatar")
 
-[node name="PageLabel" type="Label" parent="Margin/Column"]
+[node name="GuidePortrait" type="TextureRect" parent="Margin/Column/StoryCard/CardColumn/GuideHeader/GuideRow/AvatarFrame"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
-text = "Página 1 de 3"
-horizontal_alignment = 1
+expand_mode = 1
+stretch_mode = 6
 
-[node name="PageTitle" type="Label" parent="Margin/Column"]
+[node name="TitleCol" type="VBoxContainer" parent="Margin/Column/StoryCard/CardColumn/GuideHeader/GuideRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="GuideRoleLabel" type="Label" parent="Margin/Column/StoryCard/CardColumn/GuideHeader/GuideRow/TitleCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.36, 0.26, 1)
+theme_override_font_sizes/font_size = 16
+text = "Guia do Pantanal explica:"
+
+[node name="PageTitle" type="Label" parent="Margin/Column/StoryCard/CardColumn/GuideHeader/GuideRow/TitleCol"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.1, 0.5, 0.2, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 30
 text = "Título"
-horizontal_alignment = 1
 
-[node name="MediaBox" type="CenterContainer" parent="Margin/Column"]
+[node name="SpeakButton" type="Button" parent="Margin/Column/StoryCard/CardColumn/GuideHeader/GuideRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(124, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 21
+text = "Ouvir"
+
+[node name="MediaBox" type="CenterContainer" parent="Margin/Column/StoryCard/CardColumn"]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
-[node name="Video" type="VideoStreamPlayer" parent="Margin/Column/MediaBox"]
+[node name="MediaFrame" type="PanelContainer" parent="Margin/Column/StoryCard/CardColumn/MediaBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_media")
+
+[node name="Video" type="VideoStreamPlayer" parent="Margin/Column/StoryCard/CardColumn/MediaBox/MediaFrame"]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(444, 250)
+custom_minimum_size = Vector2(328, 184)
 layout_mode = 2
 expand = true
 
-[node name="Picture" type="TextureRect" parent="Margin/Column/MediaBox"]
+[node name="Picture" type="TextureRect" parent="Margin/Column/StoryCard/CardColumn/MediaBox/MediaFrame"]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(444, 250)
+custom_minimum_size = Vector2(328, 184)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="PageText" type="Label" parent="Margin/Column"]
+[node name="PageText" type="Label" parent="Margin/Column/StoryCard/CardColumn"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_constants/line_spacing = 8
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.0941176, 0.14902, 0.105882, 1)
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 24
 text = "Texto"
-horizontal_alignment = 1
+horizontal_alignment = 3
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ButtonRow" type="HBoxContainer" parent="Margin/Column"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 24
 
 [node name="BackButton" type="Button" parent="Margin/Column/ButtonRow"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 80)
+custom_minimum_size = Vector2(260, 62)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 28
 text = "Voltar"
 
 [node name="NextButton" type="Button" parent="Margin/Column/ButtonRow"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 80)
+custom_minimum_size = Vector2(320, 62)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 28
 text = "Próxima"

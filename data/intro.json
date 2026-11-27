@@ -1,24 +1,28 @@
 {
 	"title": "Antes de começar",
+	"title_audio": "res://assets/audio/narration/intro_phase1/title_intro.ogg",
 	"start_text": "Começar o quiz",
 	"pages": [
 		{
-			"title": "Os bichos do Pantanal",
-			"text": "O Pantanal é um dos lugares com mais animais do mundo.\nO tuiuiú é a ave símbolo do Pantanal. A onça-pintada é o maior felino das Américas. O tamanduá-bandeira come formigas.\nCada bicho tem um papel: se um some, a natureza toda sofre.",
+			"title": "Os animais do Pantanal",
+			"audio_path": "res://assets/audio/narration/intro_phase1/bichos_pantanal.ogg",
+			"text": "O Pantanal é um dos lugares com mais animais do mundo.\nO tuiuiú é a ave símbolo do Pantanal. A onça-pintada é o maior felino das Américas. O tamanduá-bandeira come formigas.\nCada animal tem um papel importante: se um desaparece, a natureza toda sofre.",
 			"video_path": "res://assets/videos/intro_fauna.ogv",
-			"image_path": ""
+			"image_path": "res://assets/images/intro_fauna.png"
 		},
 		{
 			"title": "As plantas do Pantanal",
-			"text": "Boa parte do Pantanal fica coberta de água por meses.\nO aguapé é uma planta que vive na água e serve de abrigo e comida para peixes e outros bichos.\nSem as plantas, os animais perdem a casa e o alimento.",
+			"audio_path": "res://assets/audio/narration/intro_phase1/plantas_pantanal.ogg",
+			"text": "Boa parte do Pantanal fica coberta de água por meses.\nO aguapé é uma planta que vive na água e serve de abrigo e alimento para peixes e outros animais.\nSem as plantas, os animais perdem o abrigo e o alimento.",
 			"video_path": "res://assets/videos/intro_flora.ogv",
-			"image_path": ""
+			"image_path": "res://assets/images/intro_flora.png"
 		},
 		{
 			"title": "Proteger o Pantanal",
-			"text": "As queimadas destroem plantas, matam animais e deixam o ar ruim para todos.\nProteger o Pantanal é não jogar fogo no mato, não soltar balão e avisar os bombeiros se ver fumaça.\nQuando a gente protege a natureza, a vida continua. Isso é o ODS 15, Vida na Terra.",
+			"audio_path": "res://assets/audio/narration/intro_phase1/proteger_pantanal.ogg",
+			"text": "As queimadas destroem plantas, matam animais e deixam o ar ruim para todos.\nProteger o Pantanal é não colocar fogo na vegetação, não soltar balão e avisar os bombeiros se vir fumaça.\nQuando protegemos a natureza, a vida continua. Isso é o ODS 15, Vida na Terra.",
 			"video_path": "res://assets/videos/intro_conservacao.ogv",
-			"image_path": ""
+			"image_path": "res://assets/images/intro_conservacao.png"
 		}
 	]
 }

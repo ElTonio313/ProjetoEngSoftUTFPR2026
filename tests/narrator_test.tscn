@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2y1so38q4fw0"]
+
+[ext_resource type="Script" uid="uid://2abjusijfoq3" path="res://tests/narrator_test.gd" id="1_na7b4"]
+
+[node name="NarratorTest" type="Node" unique_id=658723578]
+script = ExtResource("1_na7b4")

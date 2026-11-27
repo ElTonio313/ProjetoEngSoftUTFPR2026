@@ -1,22 +1,102 @@
-[gd_scene format=3 uid="uid://cpwrvp5xnf8w7"]
+[gd_scene load_steps=8 format=3 uid="uid://cpwrvp5xnf8w7"]
 
 [ext_resource type="Script" uid="uid://s16qnswog6ib" path="res://scenes/final_reports/final_report.gd" id="1_w6el0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n77a"]
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avatar"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gold_badge"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.972549, 0.878431, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.84, 0.63, 0.16, 1)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+content_margin_left = 20.0
+content_margin_top = 12.0
+content_margin_right = 20.0
+content_margin_bottom = 12.0
+bg_color = Color(0.980392, 0.972549, 0.94902, 0.97)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 5
+border_color = Color(0.180392, 0.490196, 0.196078, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_highlight"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.976471, 0.894118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.84, 0.65, 0.2, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_item"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.70, 0.82, 0.71, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpi"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.921569, 0.960784, 0.92549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.52, 0.73, 0.54, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="FinalReport" type="Control" unique_id=1871922831]
 layout_mode = 3
@@ -34,7 +114,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+color = Color(0.94902, 0.937255, 0.901961, 1)
+
+[node name="BgTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.58)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=514717949]
 layout_mode = 1
@@ -43,134 +135,465 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 10
 
 [node name="MainColumn" type="VBoxContainer" parent="MarginContainer" unique_id=1220002407]
 layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="TitleLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=383926003]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 48
-text = "Parabéns"
-horizontal_alignment = 1
-
-[node name="SubtitleLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=1264274262]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 30
-text = "Você concluiu as duas fases"
-horizontal_alignment = 1
-
-[node name="TotalTimeLabel" type="Label" parent="MarginContainer/MainColumn" unique_id=1346351059]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 32
-text = "Tempo total: --"
-horizontal_alignment = 1
-
-[node name="CardsRow" type="HBoxContainer" parent="MarginContainer/MainColumn" unique_id=1242005843]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 24
-
-[node name="Phase1Card" type="PanelContainer" parent="MarginContainer/MainColumn/CardsRow" unique_id=1763220950]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7n77a")
-
-[node name="Phase1Column" type="VBoxContainer" parent="MarginContainer/MainColumn/CardsRow/Phase1Card" unique_id=444142982]
-layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Phase1Title" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card/Phase1Column" unique_id=1204877797]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 34
-text = "Fase 1: Quiz"
-horizontal_alignment = 1
-
-[node name="Phase1Summary" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card/Phase1Column" unique_id=1180605054]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
-text = "Acertos: -- de --"
-autowrap_mode = 3
-
-[node name="Phase1Time" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card/Phase1Column" unique_id=840266597]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
-text = "Tempo: --"
-autowrap_mode = 3
-
-[node name="Phase1Categories" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card/Phase1Column" unique_id=462730700]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
-text = "Fauna: --
-Flora: --
-Conservação: --"
-autowrap_mode = 3
-
-[node name="Phase1Card2" type="PanelContainer" parent="MarginContainer/MainColumn/CardsRow" unique_id=1993698558]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7n77a")
-
-[node name="Phase2Column" type="VBoxContainer" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2" unique_id=1178977727]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Phase2Title" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2/Phase2Column" unique_id=1494487060]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 34
-text = "Fase 2: Classificação"
-horizontal_alignment = 1
-
-[node name="Phase2Summary" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2/Phase2Column" unique_id=1055032695]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
-text = "Animais classificados: -- de --"
-autowrap_mode = 3
-
-[node name="Phase2Errors" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2/Phase2Column" unique_id=2076621164]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
-text = "Erro: --"
-autowrap_mode = 3
-
-[node name="Phase2Exercises" type="Label" parent="MarginContainer/MainColumn/CardsRow/Phase1Card2/Phase2Column" unique_id=200251281]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-theme_override_font_sizes/font_size = 28
-text = "Animal 1: --
-Animal 2: --
-Animal 3: --
-Animal 4: --
-Animal 5: --
-Animal 6: --"
-autowrap_mode = 3
-
-[node name="BackButton" type="Button" parent="MarginContainer/MainColumn" unique_id=23665570]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(360, 80)
+[node name="TabRow" type="HBoxContainer" parent="MarginContainer/MainColumn"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 38
+theme_override_constants/separation = 18
+
+[node name="StudentTabButton" type="Button" parent="MarginContainer/MainColumn/TabRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(340, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Visão do Aluno"
+
+[node name="TeacherTabButton" type="Button" parent="MarginContainer/MainColumn/TabRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Visão do Professor"
+
+[node name="StudentView" type="VBoxContainer" parent="MarginContainer/MainColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="BannerCard" type="PanelContainer" parent="MarginContainer/MainColumn/StudentView"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="BannerRow" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView/BannerCard"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="AvatarFrame" type="PanelContainer" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_avatar")
+
+[node name="GuidePortrait" type="TextureRect" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow/AvatarFrame"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BannerCol" type="VBoxContainer" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow/BannerCol" unique_id=383926003]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 25
+text = "Parabéns! Você concluiu a aventura pelo Pantanal!"
+autowrap_mode = 3
+
+[node name="SubtitleLabel" type="Label" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow/BannerCol" unique_id=1264274262]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.30, 0.24, 1)
+theme_override_font_sizes/font_size = 18
+text = "Conquista desbloqueada: Guardião do Pantanal (ODS 15)!"
+autowrap_mode = 3
+
+[node name="GrandBadgePanel" type="PanelContainer" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gold_badge")
+
+[node name="GrandBadgeRow" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow/GrandBadgePanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GrandMedalIcon" type="TextureRect" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow/GrandBadgePanel/GrandBadgeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GrandBadgeCol" type="VBoxContainer" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow/GrandBadgePanel/GrandBadgeRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="GrandBadgeTitle" type="Label" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow/GrandBadgePanel/GrandBadgeRow/GrandBadgeCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.27, 0.02, 1)
+theme_override_font_sizes/font_size = 16
+text = "Selo Guardião ODS 15"
+
+[node name="GrandStarsLabel" type="Label" parent="MarginContainer/MainColumn/StudentView/BannerCard/BannerRow/GrandBadgePanel/GrandBadgeRow/GrandBadgeCol"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 17
+text = "6 de 6 Estrelas"
+
+[node name="CardsRow" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView" unique_id=1242005843]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 22
+
+[node name="Phase1Card" type="PanelContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow" unique_id=1763220950]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Phase1Column" type="VBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card" unique_id=444142982]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Phase1HeaderRow" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column"]
+layout_mode = 2
+
+[node name="Phase1Title" type="Label" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column/Phase1HeaderRow" unique_id=1204877797]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fase 1: Quiz do Pantanal"
+
+[node name="Phase1StarsHolder" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column/Phase1HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Phase1Highlight" type="PanelContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight")
+
+[node name="HRow" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column/Phase1Highlight"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Phase1MedalIcon" type="TextureRect" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column/Phase1Highlight/HRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Box" type="VBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column/Phase1Highlight/HRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Phase1BannerTitle" type="Label" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column/Phase1Highlight/HRow/Box"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.27, 0.02, 1)
+theme_override_font_sizes/font_size = 19
+text = "Medalha: Explorador do Pantanal"
+
+[node name="Phase1BannerSub" type="Label" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column/Phase1Highlight/HRow/Box"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Você concluiu todas as perguntas"
+
+[node name="Phase1Items" type="VBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase1Card/Phase1Column"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="Phase2Card" type="PanelContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow" unique_id=1993698558]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Phase2Column" type="VBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card" unique_id=1178977727]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Phase2HeaderRow" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column"]
+layout_mode = 2
+
+[node name="Phase2Title" type="Label" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column/Phase2HeaderRow" unique_id=1494487060]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fase 2: Classificação"
+
+[node name="Phase2StarsHolder" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column/Phase2HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Phase2Highlight" type="PanelContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_highlight")
+
+[node name="HRow" type="HBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column/Phase2Highlight"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Phase2MedalIcon" type="TextureRect" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column/Phase2Highlight/HRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Box" type="VBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column/Phase2Highlight/HRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Phase2BannerTitle" type="Label" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column/Phase2Highlight/HRow/Box"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.27, 0.02, 1)
+theme_override_font_sizes/font_size = 19
+text = "Medalha: Amigo da Fauna (ODS 15)"
+
+[node name="Phase2BannerSub" type="Label" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column/Phase2Highlight/HRow/Box"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Você classificou todos os animais corretamente"
+
+[node name="Phase2Items" type="VBoxContainer" parent="MarginContainer/MainColumn/StudentView/CardsRow/Phase2Card/Phase2Column"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="TeacherView" type="PanelContainer" parent="MarginContainer/MainColumn"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="TeacherColumn" type="VBoxContainer" parent="MarginContainer/MainColumn/TeacherView"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TeacherTitle" type="Label" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 28
+text = "Acompanhamento Pedagógico — Histórico de Alunos"
+horizontal_alignment = 1
+
+[node name="KpiRow" type="HBoxContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Kpi1" type="PanelContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpi")
+
+[node name="Box" type="VBoxContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi1"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Lbl" type="Label" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi1/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.33, 0.26, 1)
+theme_override_font_sizes/font_size = 16
+text = "Partidas Concluídas"
+horizontal_alignment = 1
+
+[node name="KpiSessionsVal" type="Label" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi1/Box"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 23
+text = "0 sessões"
+horizontal_alignment = 1
+
+[node name="Kpi2" type="PanelContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpi")
+
+[node name="Box" type="VBoxContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi2"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Lbl" type="Label" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi2/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.33, 0.26, 1)
+theme_override_font_sizes/font_size = 16
+text = "Média Fase 1 (de primeira)"
+horizontal_alignment = 1
+
+[node name="KpiP1Val" type="Label" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi2/Box"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 23
+text = "--"
+horizontal_alignment = 1
+
+[node name="Kpi3" type="PanelContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpi")
+
+[node name="Box" type="VBoxContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi3"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Lbl" type="Label" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi3/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.33, 0.26, 1)
+theme_override_font_sizes/font_size = 16
+text = "Média de Erros na Fase 2"
+horizontal_alignment = 1
+
+[node name="KpiP2Val" type="Label" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/KpiRow/Kpi3/Box"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.105882, 0.368627, 0.12549, 1)
+theme_override_font_sizes/font_size = 23
+text = "--"
+horizontal_alignment = 1
+
+[node name="ExportStatusLabel" type="Label" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.45, 0.18, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TeacherScroll" type="ScrollContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SessionCardsVBox" type="VBoxContainer" parent="MarginContainer/MainColumn/TeacherView/TeacherColumn/TeacherScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="BottomRow" type="HBoxContainer" parent="MarginContainer/MainColumn"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="SpeakReportButton" type="Button" parent="MarginContainer/MainColumn/BottomRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Ouvir Resumo"
+
+[node name="ExportPdfButton" type="Button" parent="MarginContainer/MainColumn/BottomRow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(290, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Exportar em PDF"
+
+[node name="ClearHistoryButton" type="Button" parent="MarginContainer/MainColumn/BottomRow"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(280, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Limpar Histórico"
+
+[node name="BackButton" type="Button" parent="MarginContainer/MainColumn/BottomRow" unique_id=23665570]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Voltar ao Menu"
+
+[node name="ConfirmClearOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="ConfirmClearOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Center" type="CenterContainer" parent="ConfirmClearOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="ConfirmClearOverlay/Center"]
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Box" type="VBoxContainer" parent="ConfirmClearOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ConfirmTitle" type="Label" parent="ConfirmClearOverlay/Center/Panel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.69, 0.0, 0.125, 1)
+theme_override_font_sizes/font_size = 32
+text = "Confirmar exclusão do histórico"
+horizontal_alignment = 1
+
+[node name="ConfirmDesc" type="Label" parent="ConfirmClearOverlay/Center/Panel/Box"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Tem certeza que deseja apagar permanentemente todos os registros de partidas da turma?"
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="BtnRow" type="HBoxContainer" parent="ConfirmClearOverlay/Center/Panel/Box"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="CancelClearButton" type="Button" parent="ConfirmClearOverlay/Center/Panel/Box/BtnRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Cancelar"
+
+[node name="ConfirmDeleteButton" type="Button" parent="ConfirmClearOverlay/Center/Panel/Box/BtnRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sim, Apagar"

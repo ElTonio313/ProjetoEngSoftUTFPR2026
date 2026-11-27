@@ -5,42 +5,42 @@
 			"name": "Capivara",
 			"category": "mamifero",
 			"hint": "A capivara tem pelos no corpo, e os filhotes mamam o leite da mãe.",
-			"image_path": ""
+			"image_path": "res://assets/images/capivara.png"
 		},
 		{
 			"id": "jacare",
 			"name": "Jacaré",
 			"category": "reptil",
 			"hint": "O jacaré tem a pele coberta por escamas, e a fêmea põe ovos.",
-			"image_path": ""
+			"image_path": "res://assets/images/jacare.png"
 		},
 		{
 			"id": "tuiuiu",
 			"name": "Tuiuiú",
 			"category": "ave",
 			"hint": "O tuiuiú tem penas e bico, e a fêmea põe ovos.",
-			"image_path": ""
+			"image_path": "res://assets/images/tuiuiu.png"
 		},
 		{
 			"id": "onca",
 			"name": "Onça-pintada",
 			"category": "mamifero",
 			"hint": "A onça-pintada tem pelos, e os filhotes mamam o leite da mãe.",
-			"image_path": ""
+			"image_path": "res://assets/images/onca.png"
 		},
 		{
 			"id": "sucuri",
 			"name": "Sucuri",
 			"category": "reptil",
 			"hint": "A sucuri é uma cobra: o corpo dela é coberto por escamas.",
-			"image_path": ""
+			"image_path": "res://assets/images/sucuri.png"
 		},
 		{
 			"id": "arara-azul",
 			"name": "Arara-azul",
 			"category": "ave",
 			"hint": "A arara-azul tem penas coloridas e um bico forte e curvo.",
-			"image_path": ""
+			"image_path": "res://assets/images/arara_azul.png"
 		}
 	]
 }
